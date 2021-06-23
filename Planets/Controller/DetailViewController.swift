@@ -27,12 +27,9 @@ class DetailViewController: UIViewController {
         
         func updateUI() {
             nameLabel.text = planet.name
-    
             climateLabel.text = planet.climate
-    
-            gravityLabel.text = String(planet.gravity)
-    
-            populationLabel.text = String(planet.population)
+            gravityLabel.text = planet.gravity
+            populationLabel.text = planet.population
         }
 
 }

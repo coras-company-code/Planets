@@ -5,7 +5,7 @@
 //
 
 struct K {
-    static let planetsURL = "https://www.anapioficeandfire.com/api/houses?"
+    static let planetsURL = "https://swapi.dev/api/planets/?"
     
     struct SegueIdentifiers {
         static let detailSegue = "ShowDetail"
