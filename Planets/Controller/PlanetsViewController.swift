@@ -51,6 +51,19 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
     }
+    
+    //Navigation
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == K.SegueIdentifiers.detailSegue {
+            let planetViewController = segue.destination
+                as! DetailViewController
+            let indexPath = sender as! IndexPath
+               let planet = planets[indexPath.row]
+            planetViewController.planet = planet
+        }
+        
+       }
 }
 
 

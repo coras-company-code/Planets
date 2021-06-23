@@ -52,98 +52,12 @@
                     <navigationItem key="navigationItem" id="1oj-n1-oZe"/>
                     <connections>
                         <outlet property="tableView" destination="Ebh-XL-SUq" id="5WM-mr-K40"/>
-                        <segue destination="Qsd-nB-rCy" kind="show" identifier="ShowDetail" id="kLl-P0-jp7"/>
+                        <segue destination="rd0-SN-LJi" kind="show" identifier="ShowDetail" id="54J-Xz-2rK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n81-qr-9eo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1182.608695652174" y="-4.0178571428571423"/>
-        </scene>
-        <!--Detail View Controller-->
-        <scene sceneID="3r3-WT-csE">
-            <objects>
-                <viewController id="Qsd-nB-rCy" customClass="DetailViewController" customModule="Planets" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NMC-et-AX8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofh-uZ-fBS">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Climate" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Hz-3J-tjY" userLabel="ClimateLabel">
-                                        <rect key="frame" x="7" y="99" width="107" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Population" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="apz-nv-rvO" userLabel="PopulationLabel">
-                                        <rect key="frame" x="8" y="625" width="107" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gravity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="xPG-BU-gB4" userLabel="GravityLabel">
-                                        <rect key="frame" x="10" y="538" width="107" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Climate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-9c-bEC" userLabel="ClimateDescription">
-                                        <rect key="frame" x="8" y="137" width="398" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ukv-Ax-lGI">
-                                        <rect key="frame" x="3" y="0.0" width="409" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gravity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="eEw-Hl-7jU" userLabel="GravityDescription">
-                                        <rect key="frame" x="8" y="578" width="399" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Population" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="dTU-aA-QCe" userLabel="PopulationDescription">
-                                        <rect key="frame" x="3" y="673" width="399" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="1bG-X7-hka"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ofh-uZ-fBS" firstAttribute="trailing" secondItem="1bG-X7-hka" secondAttribute="trailing" id="1HL-yl-tRu"/>
-                            <constraint firstItem="1bG-X7-hka" firstAttribute="bottom" secondItem="ofh-uZ-fBS" secondAttribute="bottom" id="4AR-ed-kFa"/>
-                            <constraint firstItem="ofh-uZ-fBS" firstAttribute="top" secondItem="1bG-X7-hka" secondAttribute="top" id="DdI-IC-0ee"/>
-                            <constraint firstItem="ofh-uZ-fBS" firstAttribute="leading" secondItem="1bG-X7-hka" secondAttribute="leading" id="ZeT-ed-DYQ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="koU-X6-VTk"/>
-                    <connections>
-                        <outlet property="coatOfArmsStaticLabel" destination="apz-nv-rvO" id="vcz-uF-nN9"/>
-                        <outlet property="nameLabel" destination="Ukv-Ax-lGI" id="4WF-e5-Xtu"/>
-                        <outlet property="regionLabel" destination="Zan-9c-bEC" id="rTS-HD-r7a"/>
-                        <outlet property="wordsLabel" destination="eEw-Hl-7jU" id="11Q-eS-hJA"/>
-                        <outlet property="wordsStaticLabel" destination="xPG-BU-gB4" id="BmE-1A-yvK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xrP-Bt-ILG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2511.594202898551" y="-4.0178571428571423"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="mdi-Nu-kIU">
@@ -200,6 +114,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cyN-yh-YX1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="272.46376811594206" y="-4.0178571428571423"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="8eQ-6O-rE1">
+            <objects>
+                <viewController id="rd0-SN-LJi" customClass="DetailViewController" customModule="Planets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cX0-7G-uNy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Climate" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LB9-zk-noS" userLabel="ClimateLabel">
+                                <rect key="frame" x="4" y="131" width="107" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Population" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5Ue-Hf-1u0" userLabel="PopulationLabel">
+                                <rect key="frame" x="5" y="723" width="107" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gravity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="CmX-JH-OKP" userLabel="GravityLabel">
+                                <rect key="frame" x="7" y="636" width="107" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Climate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="DzH-Km-HDZ" userLabel="ClimateDescription">
+                                <rect key="frame" x="5" y="169" width="398" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="wLW-Bv-6x0">
+                                <rect key="frame" x="0.0" y="32" width="409" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gravity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dce-eg-gfQ" userLabel="GravityDescription">
+                                <rect key="frame" x="5" y="676" width="399" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Population" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="vbb-Om-yLk" userLabel="PopulationDescription">
+                                <rect key="frame" x="0.0" y="771" width="399" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lib-Qv-UIX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="80J-Fd-Gzw"/>
+                    <connections>
+                        <outlet property="climateLabel" destination="DzH-Km-HDZ" id="esj-tV-XzA"/>
+                        <outlet property="climateStaticLabel" destination="LB9-zk-noS" id="34w-P3-yyO"/>
+                        <outlet property="gravityLabel" destination="Dce-eg-gfQ" id="rgJ-NG-JZF"/>
+                        <outlet property="gravityStaticLabel" destination="CmX-JH-OKP" id="TBw-D5-HdP"/>
+                        <outlet property="nameLabel" destination="wLW-Bv-6x0" id="2xV-LG-ImS"/>
+                        <outlet property="populationLabel" destination="vbb-Om-yLk" id="b7M-rw-s45"/>
+                        <outlet property="populationStaticLabel" destination="5Ue-Hf-1u0" id="QAh-hK-sx8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5W9-Pm-hx9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2174" y="50"/>
         </scene>
     </scenes>
     <resources>
