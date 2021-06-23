@@ -10,24 +10,47 @@ import UIKit
 class PlanetsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var planets: [PlanetModel] = [
+        PlanetModel(name: "Earth", climate: "Dry", gravity: 1, population: 7000000000000000),
+        PlanetModel(name: "Mars", climate: "Extreme", gravity: 10, population: 0),
+        PlanetModel(name: "Pluto", climate: "Dry", gravity: 1, population: 1)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-
-
 }
 
-class PlanetsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+// MARK:- TableView Methods
+extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
+        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if planets.count == 0 {
+            return 1
+        } else {
+            return planets.count
+        }
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.CellIdentifiers.planetCell, for: indexPath)
+        cell.textLabel?.text = planets[indexPath.row].name
+        return cell
     }
-
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        if planets.count > 0 {
+            performSegue(withIdentifier: K.SegueIdentifiers.detailSegue, sender: indexPath)
+        } else {
+            return
+        }
+    }
 }
+
 

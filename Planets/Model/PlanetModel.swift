@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct PlanetModel {
+    let name: String
+    let climate: String
+    let gravity: Int
+    let population: Int
+    
+}

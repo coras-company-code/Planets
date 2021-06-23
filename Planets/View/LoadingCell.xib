@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoadingCell" id="CGl-Hy-zZ0" customClass="LoadingCell" customModule="GameOfThrones" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CGl-Hy-zZ0" id="nbh-Fm-IKN">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jh2-6d-10c">
+                        <rect key="frame" x="103.5" y="29.5" width="113" height="21"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YSg-ZJ-xS5">
+                                <rect key="frame" x="93" y="1" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qu-es-T0P">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5071850712435233" green="0.5071850712435233" blue="0.5071850712435233" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="0Qu-es-T0P" secondAttribute="bottom" id="86q-lF-a8Z"/>
+                            <constraint firstItem="0Qu-es-T0P" firstAttribute="top" secondItem="jh2-6d-10c" secondAttribute="top" id="8ge-60-TaE"/>
+                            <constraint firstAttribute="trailing" secondItem="YSg-ZJ-xS5" secondAttribute="trailing" id="BtW-4f-DXc"/>
+                            <constraint firstAttribute="trailing" secondItem="YSg-ZJ-xS5" secondAttribute="trailing" id="GuJ-Yq-fCy"/>
+                            <constraint firstAttribute="bottom" secondItem="YSg-ZJ-xS5" secondAttribute="bottom" id="Pzc-sN-4tc"/>
+                            <constraint firstItem="YSg-ZJ-xS5" firstAttribute="top" secondItem="jh2-6d-10c" secondAttribute="top" constant="1" id="X6t-yX-vdS"/>
+                            <constraint firstAttribute="bottom" secondItem="YSg-ZJ-xS5" secondAttribute="bottom" id="bNm-Ek-H0m"/>
+                            <constraint firstItem="0Qu-es-T0P" firstAttribute="leading" secondItem="jh2-6d-10c" secondAttribute="leading" id="cQ1-88-vwI"/>
+                            <constraint firstItem="YSg-ZJ-xS5" firstAttribute="leading" secondItem="0Qu-es-T0P" secondAttribute="trailing" constant="18" id="hZd-M0-Shd"/>
+                            <constraint firstItem="YSg-ZJ-xS5" firstAttribute="top" secondItem="jh2-6d-10c" secondAttribute="top" constant="1" id="lwe-5z-Qc7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jh2-6d-10c" firstAttribute="centerX" secondItem="nbh-Fm-IKN" secondAttribute="centerX" id="h4j-cq-fw9"/>
+                    <constraint firstItem="jh2-6d-10c" firstAttribute="centerY" secondItem="nbh-Fm-IKN" secondAttribute="centerY" id="xdz-bo-f44"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="spinner" destination="YSg-ZJ-xS5" id="mTj-vc-SIC"/>
+            </connections>
+            <point key="canvasLocation" x="62" y="41"/>
+        </tableViewCell>
+    </objects>
+</document>
