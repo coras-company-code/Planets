@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     
             climateLabel.text = planet.climate
     
-            gravityLabel.text = planet.climate
+            gravityLabel.text = String(planet.gravity)
     
             populationLabel.text = String(planet.population)
         }
