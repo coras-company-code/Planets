@@ -11,7 +11,7 @@ struct Results: Decodable {
     var results : [PlanetModel]
     
 }
-struct PlanetModel: Decodable {
+struct PlanetModel: Codable {
     let name: String
     let climate: String
     let gravity: String

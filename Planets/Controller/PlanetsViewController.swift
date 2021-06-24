@@ -12,20 +12,16 @@ class PlanetsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var planetManager = PlanetManager()
     var planets: [PlanetModel] = []
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         setupCells(tableView: tableView)
+        loadItems()
         planetManager.delegate = self
         planetManager.fetchPlanets()
-    }
-    
-    //MARK: - Helper Methods
-    func setupCells(tableView: UITableView) {
-        tableView.register((UINib(nibName: K.CellIdentifiers.nothingFoundCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.nothingFoundCell)
-        tableView.register((UINib(nibName: K.CellIdentifiers.loadingCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.loadingCell)
     }
 }
 
@@ -34,7 +30,7 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if planets.count == 0 {
+        if planets.count == 0 || planetManager.isLoading {
             return 1
         } else {
             return planets.count
@@ -63,9 +59,8 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    //Navigation
+    //MARK - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == K.SegueIdentifiers.detailSegue {
             let planetViewController = segue.destination
                 as! DetailViewController
@@ -73,7 +68,12 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             let planet = planets[indexPath.row]
             planetViewController.planet = planet
         }
-        
+    }
+    
+    //MARK - Helper Methods
+    func setupCells(tableView: UITableView) {
+        tableView.register((UINib(nibName: K.CellIdentifiers.nothingFoundCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.nothingFoundCell)
+        tableView.register((UINib(nibName: K.CellIdentifiers.loadingCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.loadingCell)
     }
 }
 
@@ -81,7 +81,10 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
 extension PlanetsViewController: PlanetManagerDelegate {
     
     func didUpdatePlanets(planets: [PlanetModel]) {
-        self.planets += planets
+        if planets.count > 0 {
+            self.planets = planets
+            saveItems()
+        }
         planetManager.performedRequest = true
         planetManager.isLoading = false
         DispatchQueue.main.async {
@@ -89,5 +92,32 @@ extension PlanetsViewController: PlanetManagerDelegate {
         }
     }
 }
+
+//MARK: - Model Manupulation Methods
+
+extension  PlanetsViewController {
+    func loadItems(){
+        let decoder = PropertyListDecoder()
+        do {
+            let data = try Data(contentsOf: dataFilePath!)
+            planets = try decoder.decode([PlanetModel].self, from: data)
+        } catch {
+            print("Error decoding items, \(error)")
+        }
+        tableView.reloadData()
+    }
+
+    func saveItems(){
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(planets)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding items, \(error)")
+        }
+    }
+}
+
+
 
 
