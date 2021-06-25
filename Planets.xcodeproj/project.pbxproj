@@ -19,7 +19,6 @@
 		438C8AD2268381EF00F398AA /* PlanetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C8AD0268381EF00F398AA /* PlanetManager.swift */; };
 		438C8AD3268381EF00F398AA /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C8AD1268381EF00F398AA /* PlanetModel.swift */; };
 		438C8AE22683834200F398AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438C8AE12683834200F398AA /* Main.storyboard */; };
-		438C8AED268385B000F398AA /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C8AEC268385B000F398AA /* SplashScreenViewController.swift */; };
 		438C8AF2268385C700F398AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C8AF1268385C700F398AA /* Constants.swift */; };
 		438C8AF926838C8F00F398AA /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C8AF626838C8F00F398AA /* LoadingCell.swift */; };
 		438C8AFA26838C8F00F398AA /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438C8AF726838C8F00F398AA /* NothingFoundCell.xib */; };
@@ -80,7 +79,6 @@
 		438C8AD0268381EF00F398AA /* PlanetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetManager.swift; sourceTree = "<group>"; };
 		438C8AD1268381EF00F398AA /* PlanetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
 		438C8AE12683834200F398AA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		438C8AEC268385B000F398AA /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		438C8AF1268385C700F398AA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		438C8AF626838C8F00F398AA /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		438C8AF726838C8F00F398AA /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				438C8AF826838C8F00F398AA /* LoadingCell.xib */,
 				438C8AF726838C8F00F398AA /* NothingFoundCell.xib */,
 				438C8AE12683834200F398AA /* Main.storyboard */,
-				438C8AEC268385B000F398AA /* SplashScreenViewController.swift */,
 				432E4125268350B300412E15 /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -436,7 +433,6 @@
 				438C8AD2268381EF00F398AA /* PlanetManager.swift in Sources */,
 				438C8AF926838C8F00F398AA /* LoadingCell.swift in Sources */,
 				438C8B1226839FCE00F398AA /* DetailViewController.swift in Sources */,
-				438C8AED268385B000F398AA /* SplashScreenViewController.swift in Sources */,
 				432E411B268350B200412E15 /* AppDelegate.swift in Sources */,
 				438C8AF2268385C700F398AA /* Constants.swift in Sources */,
 				432E411D268350B200412E15 /* SceneDelegate.swift in Sources */,
