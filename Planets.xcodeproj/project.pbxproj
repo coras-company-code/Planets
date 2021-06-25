@@ -14,6 +14,8 @@
 		432E4127268350B300412E15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432E4125268350B300412E15 /* LaunchScreen.storyboard */; };
 		432E4132268350B300412E15 /* PlanetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432E4131268350B300412E15 /* PlanetsTests.swift */; };
 		432E413D268350B300412E15 /* PlanetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432E413C268350B300412E15 /* PlanetsUITests.swift */; };
+		436B93282684DED400B9F26E /* PlanetsSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B93272684DED400B9F26E /* PlanetsSlowTests.swift */; };
+		436B934E2684F56300B9F26E /* PlanetsFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B933D2684F4AE00B9F26E /* PlanetsFakeTests.swift */; };
 		438C8AD2268381EF00F398AA /* PlanetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C8AD0268381EF00F398AA /* PlanetManager.swift */; };
 		438C8AD3268381EF00F398AA /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C8AD1268381EF00F398AA /* PlanetModel.swift */; };
 		438C8AE22683834200F398AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438C8AE12683834200F398AA /* Main.storyboard */; };
@@ -40,6 +42,20 @@
 			remoteGlobalIDString = 432E4116268350B200412E15;
 			remoteInfo = Planets;
 		};
+		436B932A2684DED400B9F26E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 432E410F268350B200412E15 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 432E4116268350B200412E15;
+			remoteInfo = Planets;
+		};
+		436B93402684F4AE00B9F26E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 432E410F268350B200412E15 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 432E4116268350B200412E15;
+			remoteInfo = Planets;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +72,11 @@
 		432E4138268350B300412E15 /* PlanetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		432E413C268350B300412E15 /* PlanetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsUITests.swift; sourceTree = "<group>"; };
 		432E413E268350B300412E15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		436B93252684DED400B9F26E /* PlanetsSlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsSlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		436B93272684DED400B9F26E /* PlanetsSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsSlowTests.swift; sourceTree = "<group>"; };
+		436B93292684DED400B9F26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		436B933B2684F4AE00B9F26E /* PlanetsFakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsFakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		436B933D2684F4AE00B9F26E /* PlanetsFakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsFakeTests.swift; sourceTree = "<group>"; };
 		438C8AD0268381EF00F398AA /* PlanetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetManager.swift; sourceTree = "<group>"; };
 		438C8AD1268381EF00F398AA /* PlanetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
 		438C8AE12683834200F398AA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +110,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		436B93222684DED400B9F26E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		436B93382684F4AE00B9F26E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,6 +133,7 @@
 				432E4119268350B200412E15 /* Planets */,
 				432E4130268350B300412E15 /* PlanetsTests */,
 				432E413B268350B300412E15 /* PlanetsUITests */,
+				436B93262684DED400B9F26E /* PlanetsSlowTests */,
 				432E4118268350B200412E15 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +144,8 @@
 				432E4117268350B200412E15 /* Planets.app */,
 				432E412D268350B300412E15 /* PlanetsTests.xctest */,
 				432E4138268350B300412E15 /* PlanetsUITests.xctest */,
+				436B93252684DED400B9F26E /* PlanetsSlowTests.xctest */,
+				436B933B2684F4AE00B9F26E /* PlanetsFakeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +166,7 @@
 		432E4130268350B300412E15 /* PlanetsTests */ = {
 			isa = PBXGroup;
 			children = (
+				436B933D2684F4AE00B9F26E /* PlanetsFakeTests.swift */,
 				432E4131268350B300412E15 /* PlanetsTests.swift */,
 				432E4133268350B300412E15 /* Info.plist */,
 			);
@@ -141,6 +180,15 @@
 				432E413E268350B300412E15 /* Info.plist */,
 			);
 			path = PlanetsUITests;
+			sourceTree = "<group>";
+		};
+		436B93262684DED400B9F26E /* PlanetsSlowTests */ = {
+			isa = PBXGroup;
+			children = (
+				436B93272684DED400B9F26E /* PlanetsSlowTests.swift */,
+				436B93292684DED400B9F26E /* Info.plist */,
+			);
+			path = PlanetsSlowTests;
 			sourceTree = "<group>";
 		};
 		438C8AD7268381FA00F398AA /* Model */ = {
@@ -248,6 +296,42 @@
 			productReference = 432E4138268350B300412E15 /* PlanetsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		436B93242684DED400B9F26E /* PlanetsSlowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 436B932C2684DED400B9F26E /* Build configuration list for PBXNativeTarget "PlanetsSlowTests" */;
+			buildPhases = (
+				436B93212684DED400B9F26E /* Sources */,
+				436B93222684DED400B9F26E /* Frameworks */,
+				436B93232684DED400B9F26E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				436B932B2684DED400B9F26E /* PBXTargetDependency */,
+			);
+			name = PlanetsSlowTests;
+			productName = PlanetsSlowTests;
+			productReference = 436B93252684DED400B9F26E /* PlanetsSlowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		436B933A2684F4AE00B9F26E /* PlanetsFakeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 436B93422684F4AE00B9F26E /* Build configuration list for PBXNativeTarget "PlanetsFakeTests" */;
+			buildPhases = (
+				436B93372684F4AE00B9F26E /* Sources */,
+				436B93382684F4AE00B9F26E /* Frameworks */,
+				436B93392684F4AE00B9F26E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				436B93412684F4AE00B9F26E /* PBXTargetDependency */,
+			);
+			name = PlanetsFakeTests;
+			productName = PlanetsFakeTests;
+			productReference = 436B933B2684F4AE00B9F26E /* PlanetsFakeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -265,6 +349,14 @@
 						TestTargetID = 432E4116268350B200412E15;
 					};
 					432E4137268350B300412E15 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 432E4116268350B200412E15;
+					};
+					436B93242684DED400B9F26E = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 432E4116268350B200412E15;
+					};
+					436B933A2684F4AE00B9F26E = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 432E4116268350B200412E15;
 					};
@@ -286,6 +378,8 @@
 				432E4116268350B200412E15 /* Planets */,
 				432E412C268350B300412E15 /* PlanetsTests */,
 				432E4137268350B300412E15 /* PlanetsUITests */,
+				436B93242684DED400B9F26E /* PlanetsSlowTests */,
+				436B933A2684F4AE00B9F26E /* PlanetsFakeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -317,6 +411,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		436B93232684DED400B9F26E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		436B93392684F4AE00B9F26E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -340,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436B934E2684F56300B9F26E /* PlanetsFakeTests.swift in Sources */,
 				432E4132268350B300412E15 /* PlanetsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +458,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				432E413D268350B300412E15 /* PlanetsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		436B93212684DED400B9F26E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				436B93282684DED400B9F26E /* PlanetsSlowTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		436B93372684F4AE00B9F26E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +488,16 @@
 			isa = PBXTargetDependency;
 			target = 432E4116268350B200412E15 /* Planets */;
 			targetProxy = 432E4139268350B300412E15 /* PBXContainerItemProxy */;
+		};
+		436B932B2684DED400B9F26E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 432E4116268350B200412E15 /* Planets */;
+			targetProxy = 436B932A2684DED400B9F26E /* PBXContainerItemProxy */;
+		};
+		436B93412684F4AE00B9F26E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 432E4116268350B200412E15 /* Planets */;
+			targetProxy = 436B93402684F4AE00B9F26E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -611,6 +745,82 @@
 			};
 			name = Release;
 		};
+		436B932D2684DED400B9F26E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PlanetsSlowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = corascompanycode.PlanetsSlowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planets.app/Planets";
+			};
+			name = Debug;
+		};
+		436B932E2684DED400B9F26E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PlanetsSlowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = corascompanycode.PlanetsSlowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planets.app/Planets";
+			};
+			name = Release;
+		};
+		436B93432684F4AE00B9F26E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PlanetsFakeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = corascompanycode.PlanetsFakeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planets.app/Planets";
+			};
+			name = Debug;
+		};
+		436B93442684F4AE00B9F26E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PlanetsFakeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = corascompanycode.PlanetsFakeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planets.app/Planets";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -646,6 +856,24 @@
 			buildConfigurations = (
 				432E4148268350B300412E15 /* Debug */,
 				432E4149268350B300412E15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		436B932C2684DED400B9F26E /* Build configuration list for PBXNativeTarget "PlanetsSlowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				436B932D2684DED400B9F26E /* Debug */,
+				436B932E2684DED400B9F26E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		436B93422684F4AE00B9F26E /* Build configuration list for PBXNativeTarget "PlanetsFakeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				436B93432684F4AE00B9F26E /* Debug */,
+				436B93442684F4AE00B9F26E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

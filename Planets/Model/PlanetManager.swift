@@ -56,11 +56,26 @@ class PlanetManager {
             for planet in decodedData.results {
                 planets.append(planet)
             }
+            
+            
+            //            if decodedData.count > 0 {
+            //                self.pageNumber += 1
+            //                planets += decodedData
+            //            } else {
+            //                resultsToFetch = false
+            //                print("No (additional) results returned")
+            //            }
         } catch {
             print("Parsing Error:\(error)")
         }
         
         return planets
+        
+        //    func fetchAdditonalResults(row: Int, lastPlanet: Int) {
+        //        if row == lastPlanet - 1 && resultsToFetch {
+        //            fetchPlanets()
+        //        }
+        //    }
     }
     
 }
