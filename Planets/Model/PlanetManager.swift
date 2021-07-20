@@ -34,12 +34,18 @@ class PlanetManager {
                 if error != nil {
                     print(error!)
                     self.delegate?.didUpdatePlanets(planets: [])
+                    self.performedRequest = true //should these be in the view controller?
+                    self.isLoading = false //should these be in the view controller?
                     return
                 }
                 
                 if let planets = self.parseJSON(planetsData: data!) {
+                    self.performedRequest = true //should these be in the view controller?
+                    self.isLoading = false //should these be in the view controller?
                     self.delegate?.didUpdatePlanets(planets: planets)
                 }
+                
+                
             }
             task.resume()
         }
@@ -56,7 +62,6 @@ class PlanetManager {
             for planet in decodedData.results {
                 planets.append(planet)
             }
-            
             
             //            if decodedData.count > 0 {
             //                self.pageNumber += 1
@@ -78,4 +83,28 @@ class PlanetManager {
         //    }
     }
     
+    
+    
+    //MARK: - Model Manupulation Methods
+
+    func loadItems(from filePath: URL?) {
+            let decoder = PropertyListDecoder()
+            do {
+                let data = try Data(contentsOf: filePath!)
+                let planets = try decoder.decode([PlanetModel].self, from: data)
+                self.delegate?.didUpdatePlanets(planets: planets)
+            } catch {
+                print("Error decoding items, \(error)")
+            }
+        }
 }
+
+func saveItems(_ items: [PlanetModel], to filePath: URL? ){
+            let encoder = PropertyListEncoder()
+            do {
+                let data = try encoder.encode(items)
+                try data.write(to: filePath!)
+            } catch {
+                print("Error encoding items, \(error)")
+            }
+        }

@@ -19,9 +19,10 @@ class PlanetsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setupCells(tableView: tableView)
-        loadItems()
         planetManager.delegate = self
+        planetManager.loadItems(from: dataFilePath)
         planetManager.fetchPlanets()
+       
     }
 }
 
@@ -83,40 +84,15 @@ extension PlanetsViewController: PlanetManagerDelegate {
     func didUpdatePlanets(planets: [PlanetModel]) {
         if planets.count > 0 {
             self.planets = planets
-            saveItems()
+            saveItems(planets, to: dataFilePath)
         }
-        planetManager.performedRequest = true
-        planetManager.isLoading = false
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
 }
 
-//MARK: - Model Manupulation Methods
 
-extension  PlanetsViewController {
-    func loadItems(){
-        let decoder = PropertyListDecoder()
-        do {
-            let data = try Data(contentsOf: dataFilePath!)
-            planets = try decoder.decode([PlanetModel].self, from: data)
-        } catch {
-            print("Error decoding items, \(error)")
-        }
-        tableView.reloadData()
-    }
-
-    func saveItems(){
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(planets)
-            try data.write(to: dataFilePath!)
-        } catch {
-            print("Error encoding items, \(error)")
-        }
-    }
-}
 
 
 
