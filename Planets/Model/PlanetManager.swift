@@ -8,22 +8,26 @@
 import Foundation
 
 protocol PlanetManagerDelegate {
-    func didUpdatePlanets(planets: [PlanetModel])
+    func didUpdatePlanets(planets: [PlanetModel]?)
 }
 
 class PlanetManager {
     var delegate: PlanetManagerDelegate?
     let planetsURL = K.planetsURL
     let pageNumber = 1
+    //do i need both of these?:
     var performedRequest = false
     var isLoading = true
    
     func fetchPlanets() {
         let urlString = "\(planetsURL)page=\(pageNumber)"
-        performRequest(urlString: urlString)
+        performRequest(urlString: urlString, completion: {
+            self.performedRequest = true
+            self.isLoading = false
+        })
     }
     
-    func performRequest(urlString: String) {
+    func performRequest(urlString: String, completion: @escaping () -> Void) {
         
         if let url = URL(string: urlString) {
             
@@ -33,19 +37,16 @@ class PlanetManager {
                 
                 if error != nil {
                     print(error!)
-                    self.delegate?.didUpdatePlanets(planets: [])
-                    self.performedRequest = true //should these be in the view controller?
-                    self.isLoading = false //should these be in the view controller?
+                    completion()
+                    self.delegate?.didUpdatePlanets(planets: nil)
                     return
                 }
-                
-                if let planets = self.parseJSON(planetsData: data!) {
-                    self.performedRequest = true //should these be in the view controller?
-                    self.isLoading = false //should these be in the view controller?
+                if let planets =
+                    self.parseJSON(planetsData: data!) {
+                    completion()
                     self.delegate?.didUpdatePlanets(planets: planets)
                 }
-                
-                
+                                    
             }
             task.resume()
         }
