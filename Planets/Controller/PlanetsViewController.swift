@@ -80,12 +80,10 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK:- Planet Manager Delegate
 extension PlanetsViewController: PlanetManagerDelegate {
-    
-    func didUpdatePlanets(planets: [PlanetModel]?) {
-        if (planets != nil) {
-            self.planets = planets!
-            saveItems(planets!, to: dataFilePath)
-        }
+    //this used to accept nil as a paramenter and then check for it but, this functuon shouldnt be called if its is nil!
+    func didUpdatePlanets(planets: [PlanetModel]) {
+            self.planets = planets
+            saveItems(planets, to: dataFilePath)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

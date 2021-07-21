@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PlanetManagerDelegate {
-    func didUpdatePlanets(planets: [PlanetModel]?)
+    func didUpdatePlanets(planets: [PlanetModel])
 }
 
 class PlanetManager {
@@ -21,13 +21,17 @@ class PlanetManager {
    
     func fetchPlanets() {
         let urlString = "\(planetsURL)page=\(pageNumber)"
-        performRequest(urlString: urlString, completion: {
+        performRequest(urlString: urlString) { (parsedDataArray) in
             self.performedRequest = true
             self.isLoading = false
-        })
+            if let planets = parsedDataArray as? [PlanetModel]  {
+            self.delegate?.didUpdatePlanets(planets: planets) //possibly this could just pass if its not nil?
+            }
+
+        }
     }
     
-    func performRequest(urlString: String, completion: @escaping () -> Void) {
+    func performRequest(urlString: String, completion: @escaping ([Any]?) -> Void) {
         
         if let url = URL(string: urlString) {
             
@@ -37,16 +41,13 @@ class PlanetManager {
                 
                 if error != nil {
                     print(error!)
-                    completion()
-                    self.delegate?.didUpdatePlanets(planets: nil)
+                    completion(nil)
                     return
                 }
                 if let planets =
                     self.parseJSON(planetsData: data!) {
-                    completion()
-                    self.delegate?.didUpdatePlanets(planets: planets)
+                    completion(planets)
                 }
-                                    
             }
             task.resume()
         }
