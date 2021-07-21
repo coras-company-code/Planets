@@ -81,10 +81,10 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK:- Planet Manager Delegate
 extension PlanetsViewController: PlanetManagerDelegate {
     
-    func didUpdatePlanets(planets: [PlanetModel]) {
-        if planets.count > 0 {
-            self.planets = planets
-            saveItems(planets, to: dataFilePath)
+    func didUpdatePlanets(planets: [PlanetModel]?) {
+        if (planets != nil) {
+            self.planets = planets!
+            saveItems(planets!, to: dataFilePath)
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
