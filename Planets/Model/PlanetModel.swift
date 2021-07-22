@@ -16,4 +16,14 @@ struct PlanetModel: Codable {
     let climate: String
     let gravity: String
     let population: String
+    let residents: [String]
+    
 }
+
+struct ResidentModel: Codable {
+    let name: String
+    let height: String
+    let gender: String
+    
+}
+
