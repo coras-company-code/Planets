@@ -22,6 +22,7 @@ class PlanetsViewController: UIViewController {
         planetManager.delegate = self
         planetManager.loadItems(from: dataFilePath)
         planetManager.fetchPlanets()
+        
        
     }
 }
@@ -47,6 +48,8 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.CellIdentifiers.planetCell, for: indexPath)
             cell.textLabel?.text = planets[indexPath.row].name
+            let residentsURLs = planets[indexPath.row].residents
+            planetManager.fetchResidents(urls: residentsURLs)
             return cell
         }
     }
@@ -82,8 +85,8 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
 extension PlanetsViewController: PlanetManagerDelegate {
     //this used to accept nil as a paramenter and then check for it but, this functuon shouldnt be called if its is nil!
     func didUpdatePlanets(planets: [PlanetModel]) {
-            self.planets = planets
-            saveItems(planets, to: dataFilePath)
+        self.planets = planets
+        saveItems(planets, to: dataFilePath)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

@@ -25,9 +25,8 @@ class PlanetManager {
             self.performedRequest = true
             self.isLoading = false
             if let planets = parsedDataArray as? [PlanetModel]  {
-            self.delegate?.didUpdatePlanets(planets: planets) //possibly this could just pass if its not nil?
+            self.delegate?.didUpdatePlanets(planets: planets)
             }
-
         }
     }
     
@@ -62,28 +61,83 @@ class PlanetManager {
             let decodedData = try decoder.decode(Results.self, from: planetsData)
             
             for planet in decodedData.results {
+                //i would like it to be here they are fetched but for now it is in the planet view controller when you click on a cell
+             //  need to fetch residents and then add to the planet model
+//                planet.residentsList = fetchResidents(urls: planet.residents)
                 planets.append(planet)
             }
-            
-            //            if decodedData.count > 0 {
-            //                self.pageNumber += 1
-            //                planets += decodedData
-            //            } else {
-            //                resultsToFetch = false
-            //                print("No (additional) results returned")
-            //            }
         } catch {
-            print("Parsing Error:\(error)")
+            print("Parsing Planet Error:\(error)")
         }
         
         return planets
-        
-        //    func fetchAdditonalResults(row: Int, lastPlanet: Int) {
-        //        if row == lastPlanet - 1 && resultsToFetch {
-        //            fetchPlanets()
-        //        }
-        //    }
+
     }
+    
+    //func fetchResidents(urls: [String]) -> [ResidentModel] {
+    func fetchResidents(urls: [String]) {
+        var residents: [ResidentModel] = []
+        for url in urls {
+            let urlString = url
+            performResidentRequest(urlString: urlString)
+            //performResidentRequest(urlString: urlString){ (parsedData) in
+                //print(parsedData)
+                //residents.append(parsedData as! ResidentModel)
+            //}
+        }
+        //return residents
+    }
+
+    
+    
+//    func performResidentRequest(urlString: String, completion: @escaping (Any?) -> Void) {
+    func performResidentRequest(urlString: String) {
+//
+        if let url = URL(string: urlString) {
+
+            let session = URLSession(configuration: .default)
+
+            let task = session.dataTask(with: url) { (data, response, error) in
+
+                if error != nil {
+                    print(error!)
+                    //completion(nil)
+                    return
+                }
+                if let resident = data {
+                    print(resident)
+                }
+//                if let resident =
+//                    self.parseJSON(planetsData: data!) {
+//                    completion(resident)
+                //}
+            }
+            task.resume()
+        }
+    }
+    
+    
+//
+//    func parseJSON(residentData: Data) -> ResidentModel? {
+//
+//        let resident: ResidentModel? = nil
+//        let decoder = JSONDecoder()
+//        do {
+//
+//            let decodedData = try decoder.decode(ResidentModel.self, from: residentData)
+//            print(decodedData)
+//
+//        } catch {
+//            print("Parsing Resident Error:\(error)")
+//        }
+//
+//        return resident
+//
+//    }
+    
+    
+    
+    
     
     
     
