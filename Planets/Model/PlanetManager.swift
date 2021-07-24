@@ -26,7 +26,7 @@ class PlanetManager {
             self.isLoading = false
             if let planets = parsedDataArray as? [PlanetModel]  {
             self.delegate?.didUpdatePlanets(planets: planets)
-            //print(planets)
+            print(planets)
             }
         }
     }
@@ -56,20 +56,36 @@ class PlanetManager {
     
     func parseJSON(planetsData: Data) -> [PlanetModel]? {
         var planets: [PlanetModel] = []
-        var residents: [ResidentModel] = []
+        var residents : [ResidentModel] = []
+        
         let decoder = JSONDecoder()
         do {
             
             let decodedData = try decoder.decode(Results.self, from: planetsData)
             
             for result in decodedData.results {
-                residents.append(fetchResidents(urls: result.residentURLs))
-                    print(residents)
+                fetchResidents(urls: result.residentURLs) { (fetchedResident) in
+                    //print(fetchedResident!)
+                    residents.append(fetchedResident!)
+                    //var residents: [ResidentModel] = []
+                    //residents.append(resident)
+                    //print(residents)
+                    //var residents = []
+                    //residents.append(fetchedResident as! ResidentModel)
+                    //print(residents)
+                    let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
+                    planets.append(planet)
+                    print(planets)
+                }
+               
+                
+                
+               
                 //let residents = [fetchResidents(urls: result.residentURLs)] //will this return a array or single
                // print(residents)
-                let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: nil)
+               
                     
-                planets.append(planet)
+                
             }
         } catch {
             print("Parsing Planet Error:\(error)")
@@ -80,15 +96,13 @@ class PlanetManager {
 
     }
     
-   //func fetchResidents(urls: [String], completion: @escaping (Any?) -> Void) {
-    func fetchResidents(urls: [String]) -> ResidentModel {
+   func fetchResidents(urls: [String], completion: @escaping (ResidentModel?) -> Void) {
+    //func fetchResidents(urls: [String]) -> ResidentModel {
         var resident: ResidentModel!
             for url in urls {
                 let urlString = url
                 performResidentRequest(urlString: urlString){ (parsedResident) in
-                   
-                    
-                    resident = parsedResident!
+                   completion(parsedResident)
                     
                    
 //                    if let resident = parsedResident! {
@@ -106,7 +120,7 @@ class PlanetManager {
                 }
                 
             }
-        return resident
+       // return resident
         }
 
     
