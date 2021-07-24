@@ -48,8 +48,6 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.CellIdentifiers.planetCell, for: indexPath)
             cell.textLabel?.text = planets[indexPath.row].name
-            let residentsURLs = planets[indexPath.row].residents
-            planetManager.fetchResidents(urls: residentsURLs)
             return cell
         }
     }

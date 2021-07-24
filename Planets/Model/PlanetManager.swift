@@ -26,73 +26,92 @@ class PlanetManager {
             self.isLoading = false
             if let planets = parsedDataArray as? [PlanetModel]  {
             self.delegate?.didUpdatePlanets(planets: planets)
+            //print(planets)
             }
         }
     }
     
     func performRequest(urlString: String, completion: @escaping ([Any]?) -> Void) {
-        
         if let url = URL(string: urlString) {
-            
             let session = URLSession(configuration: .default)
-            
             let task = session.dataTask(with: url) { (data, response, error) in
-                
                 if error != nil {
                     print(error!)
                     completion(nil)
                     return
                 }
-                if let planets =
-                    self.parseJSON(planetsData: data!) {
+                if let planets = self.parseJSON(planetsData: data!) {
                     completion(planets)
                 }
+                
+//                self.parseJSON(planetsData: data!) { (parsedPlanets) in //dont think i need a completion here as it does rely on the server
+//                    if let planets = parsedPlanets {
+//                        completion(planets)
+//                    }
+//                }
             }
             task.resume()
         }
     }
     
     func parseJSON(planetsData: Data) -> [PlanetModel]? {
-        
         var planets: [PlanetModel] = []
+        var residents: [ResidentModel] = []
         let decoder = JSONDecoder()
         do {
             
             let decodedData = try decoder.decode(Results.self, from: planetsData)
             
-            for planet in decodedData.results {
-                //i would like it to be here they are fetched but for now it is in the planet view controller when you click on a cell
-             //  need to fetch residents and then add to the planet model
-//                planet.residentsList = fetchResidents(urls: planet.residents)
+            for result in decodedData.results {
+                residents.append(fetchResidents(urls: result.residentURLs))
+                    print(residents)
+                //let residents = [fetchResidents(urls: result.residentURLs)] //will this return a array or single
+               // print(residents)
+                let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: nil)
+                    
                 planets.append(planet)
             }
         } catch {
             print("Parsing Planet Error:\(error)")
         }
-        
         return planets
+        
+        
 
     }
     
-    //func fetchResidents(urls: [String]) -> [ResidentModel] {
-    func fetchResidents(urls: [String]) {
-        var residents: [ResidentModel] = []
-        for url in urls {
-            let urlString = url
-            performResidentRequest(urlString: urlString)
-            //performResidentRequest(urlString: urlString){ (parsedData) in
-                //print(parsedData)
-                //residents.append(parsedData as! ResidentModel)
-            //}
+   //func fetchResidents(urls: [String], completion: @escaping (Any?) -> Void) {
+    func fetchResidents(urls: [String]) -> ResidentModel {
+        var resident: ResidentModel!
+            for url in urls {
+                let urlString = url
+                performResidentRequest(urlString: urlString){ (parsedResident) in
+                   
+                    
+                    resident = parsedResident!
+                    
+                   
+//                    if let resident = parsedResident! {
+//                    residents.append(resident)
+//                    }
+                    //why does the above work and not below
+//                    if let resident = parsedResident! {
+//                        print("Here")
+//                        print(resident)
+//                        residents.append(resident)
+//                    }
+                    
+//                    print("Here")
+//                    print(residents)
+                }
+                
+            }
+        return resident
         }
-        //return residents
-    }
 
     
     
-//    func performResidentRequest(urlString: String, completion: @escaping (Any?) -> Void) {
-    func performResidentRequest(urlString: String) {
-//
+  func performResidentRequest(urlString: String, completion: @escaping (ResidentModel?) -> Void) {
         if let url = URL(string: urlString) {
 
             let session = URLSession(configuration: .default)
@@ -101,44 +120,32 @@ class PlanetManager {
 
                 if error != nil {
                     print(error!)
-                    //completion(nil)
+                    completion(nil)
                     return
                 }
-                if let resident = data {
-                    print(resident)
+             
+                if let resident = self.parseJSON(residentData: data!) {
+                    completion(resident)
                 }
-//                if let resident =
-//                    self.parseJSON(planetsData: data!) {
-//                    completion(resident)
-                //}
+
             }
             task.resume()
         }
     }
     
     
-//
-//    func parseJSON(residentData: Data) -> ResidentModel? {
-//
-//        let resident: ResidentModel? = nil
-//        let decoder = JSONDecoder()
-//        do {
-//
-//            let decodedData = try decoder.decode(ResidentModel.self, from: residentData)
-//            print(decodedData)
-//
-//        } catch {
-//            print("Parsing Resident Error:\(error)")
-//        }
-//
-//        return resident
-//
-//    }
-    
-    
-    
-    
-    
+
+    func parseJSON(residentData: Data) -> ResidentModel? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(ResidentModel.self, from: residentData)
+            let resident = ResidentModel(name: decodedData.name, height: decodedData.height, gender: decodedData.gender)
+            return resident
+        } catch {
+            print("Parsing Resident Error:\(error)")
+            return nil
+        }
+    }
     
     
     //MARK: - Model Manupulation Methods

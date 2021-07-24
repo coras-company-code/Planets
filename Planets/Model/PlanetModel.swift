@@ -16,9 +16,20 @@ struct PlanetModel: Codable {
     let climate: String
     let gravity: String
     let population: String
-    let residents: [String]
+    let residentURLs: [String]
+    let residentDetails: [ResidentModel]?
     
+    enum CodingKeys: String, CodingKey {
+        case name
+        case climate
+        case gravity
+        case population
+        case residentURLs = "residents"
+        case residentDetails
+       }
 }
+
+
 
 struct ResidentModel: Codable {
     let name: String
