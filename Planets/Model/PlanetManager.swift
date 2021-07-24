@@ -40,7 +40,8 @@ class PlanetManager {
                     completion(nil)
                     return
                 }
-                if let planets = self.parseJSON(planetsData: data!) {
+                self.parseJSON(planetsData: data!) { (planets) in
+                    
                     completion(planets)
                 }
                 
@@ -54,7 +55,8 @@ class PlanetManager {
         }
     }
     
-    func parseJSON(planetsData: Data) -> [PlanetModel]? {
+    //func parseJSON(planetsData: Data) -> [PlanetModel]? {
+    func parseJSON(planetsData: Data, completion: @escaping ([PlanetModel]) -> Void) {
         var planets: [PlanetModel] = []
         var residents : [ResidentModel] = []
         
@@ -75,7 +77,7 @@ class PlanetManager {
                     //print(residents)
                     let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
                     planets.append(planet)
-                    print(planets)
+                    completion(planets)
                 }
                
                 
@@ -90,7 +92,7 @@ class PlanetManager {
         } catch {
             print("Parsing Planet Error:\(error)")
         }
-        return planets
+      //  return planets
         
         
 
