@@ -15,8 +15,7 @@ class PlanetManager {
     var delegate: PlanetManagerDelegate?
     let planetsURL = K.planetsURL
     let pageNumber = 1
-    //do i need both of these?:
-    var performedRequest = false
+    var performedRequest = false //Note to self: do i need both of these?
     var isLoading = true
    
     func fetchPlanets() {
@@ -26,25 +25,20 @@ class PlanetManager {
             self.isLoading = false
             if let planets = parsedDataArray as? [PlanetModel]  {
             self.delegate?.didUpdatePlanets(planets: planets)
-            print(planets)
+            print("Planets in fetch planets function: \(planets)")
             }
         }
     }
     
     func performRequest(urlString: String, completion: @escaping ([Any]?) -> Void)  {
-        
         if let url = URL(string: urlString) {
-            
             let session = URLSession(configuration: .default)
-            
             let task = session.dataTask(with: url) { (data, response, error) in
-                
                 if error != nil {
                     print(error!)
                     completion(nil)
                     return
                 }
-                
                 if let planets = self.parseJSON(planetsData: data!) {
                     completion(planets)
                 }
@@ -60,13 +54,20 @@ class PlanetManager {
         do {
             let decodedData = try decoder.decode(Results.self, from: planetsData)
             
+            //isolating one planet to test it is working:
+            let result = decodedData.results[0]
+            //let residents: [ResidentModel] = []
+            let residents = fetchResidents(urls: result.residentURLs) //this will return an array
+            let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
+            planets.append(planet)
             
-            for result in decodedData.results {
-                let residents: [ResidentModel] = []
-                //let residents = fetchResidents(urls: result.residentURLs) //this will return an array
-                let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
-                planets.append(planet)
-            }
+            //once working I will use this code:
+//            for result in decodedData.results {
+//                let residents: [ResidentModel] = []
+//                //let residents = fetchResidents(urls: result.residentURLs) //this will return an array
+//                let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
+//                planets.append(planet)
+//            }
         } catch {
             print("Parsing Error:\(error)")
         }
