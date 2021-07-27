@@ -72,3 +72,7 @@ The mutating keyword is only required if you are changing any state contained wi
 
 
 ## Enumerations 
+
+
+## Storyboards
+Why are IBOutlets declared with a weak attribute by default?
