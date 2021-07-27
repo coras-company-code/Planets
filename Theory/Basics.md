@@ -53,6 +53,9 @@ optionals make map complicated/dangerous if the transformed array now stores opt
 
 *flatMap()* performs a transformation , but then flattens what comes back so that “optional optional” just becomes “optional”.
                                         it also can flatten out arrays, if each transform results in an array, extracts from the array and adds to the main array                                           with the rest of the tranformations
+*Update*
+Some uses of flatMap() are being depreciated:
+https://useyourloaf.com/blog/replacing-flatmap-with-compactmap/
 
 ## Debugging
 Compile-Time Errors: Errors that occur when you violate the rules of writing syntax are known as Compile-Time errors
