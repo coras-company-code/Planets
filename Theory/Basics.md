@@ -53,3 +53,8 @@ optionals make map complicated/dangerous if the transformed array now stores opt
 
 *flatMap()* performs a transformation , but then flattens what comes back so that “optional optional” just becomes “optional”.
 
+## Debugging
+Compile-Time Errors: Errors that occur when you violate the rules of writing syntax are known as Compile-Time errors
+Run-Time Errors: Errors which occur during program execution(run-time) after successful compilation are called run-time errors. 
+
+
