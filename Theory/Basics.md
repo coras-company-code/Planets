@@ -63,3 +63,12 @@ Compile-Time Errors: Errors that occur when you violate the rules of writing syn
 Run-Time Errors: Errors which occur during program execution(run-time) after successful compilation are called run-time errors. 
 
 
+## Functions (keywords)
+inout parameters 
+https://www.hackingwithswift.com/sixty/5/10/inout-parameters
+
+mutating
+The mutating keyword is only required if you are changing any state contained within the struct. Since Swift structs are immutable objects, calling a mutating function actually returns a new struct in-place (much like passing an inout parameter to a function). The mutating keyword lets callers know that the method is going to make the value change. 
+
+
+## Enumerations 
