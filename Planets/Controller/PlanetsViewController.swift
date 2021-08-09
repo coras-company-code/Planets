@@ -21,9 +21,12 @@ class PlanetsViewController: UIViewController {
         setupCells(tableView: tableView)
         planetManager.delegate = self
         planetManager.loadItems(from: dataFilePath)
-        planetManager.fetchPlanets()
-        
-       
+        planetManager.fetchPlanets() { (planets) in
+        self.planets = planets
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -84,7 +87,7 @@ extension PlanetsViewController: PlanetManagerDelegate {
     //this used to accept nil as a paramenter and then check for it but, this functuon shouldnt be called if its is nil!
     func didUpdatePlanets(planets: [PlanetModel]) {
         self.planets = planets
-        saveItems(planets, to: dataFilePath)
+      //  saveItems(planets, to: dataFilePath)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

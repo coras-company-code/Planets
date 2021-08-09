@@ -7,25 +7,38 @@
 
 import Foundation
 
-protocol PlanetManagerDelegate {
+protocol PlanetManagerDelegate: AnyObject {
     func didUpdatePlanets(planets: [PlanetModel])
 }
 
+
+//enum NetworkError: Error {
+//    case networkError
+//}
+
 class PlanetManager {
-    var delegate: PlanetManagerDelegate?
+    weak var delegate: PlanetManagerDelegate?
     let planetsURL = K.planetsURL
     let pageNumber = 1
     var performedRequest = false //Note to self: do i need both of these?
     var isLoading = true
    
-    func fetchPlanets() {
+    func fetchPlanets(completion: @escaping ([PlanetModel]) -> Void) {
         let urlString = "\(planetsURL)page=\(pageNumber)"
         performRequest(urlString: urlString) { (parsedDataArray) in
             self.performedRequest = true
             self.isLoading = false
-            if let planets = parsedDataArray as? [PlanetModel]  {
-            self.delegate?.didUpdatePlanets(planets: planets)
-            print("Planets in fetch planets function: \(planets)")
+            
+            
+            if let parsedData = parsedDataArray as? [PlanetModel]  {
+                var planets: [PlanetModel] = []
+                for planet in parsedData {
+                    self.fetchResidents(urls: planet.residentURLs) { (residents) in
+                        let planet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
+                        planets.append(planet)
+                    }
+                }
+                completion(planets)
             }
         }
     }
@@ -48,18 +61,22 @@ class PlanetManager {
     }
     
     func parseJSON(planetsData: Data) -> [PlanetModel]? {
-        
         var planets: [PlanetModel] = []
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(Results.self, from: planetsData)
             
-            //isolating one planet to test it is working:
-            let result = decodedData.results[0]
-            //let residents: [ResidentModel] = []
-            let residents = fetchResidents(urls: result.residentURLs) //this will return an array
-            let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
-            planets.append(planet)
+            for planet in decodedData.results {
+                    planets.append(planet)
+                }
+            
+//            //isolating one planet to test it is working:
+//            let result = decodedData.results[0]
+//            //let residents: [ResidentModel] = []
+//            let residents = fetchResidents(urls: result.residentURLs, completion: <#([ResidentModel?]) -> ()#>) //this will return an array
+//            print(residents)
+//            let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
+//            planets.append(planet)
             
             //once working I will use this code:
 //            for result in decodedData.results {
@@ -76,7 +93,7 @@ class PlanetManager {
  
     //MARK: - Model Manupulation Methods
 
-    func loadItems(from filePath: URL?) {
+        func loadItems(from filePath: URL?) {
             let decoder = PropertyListDecoder()
             do {
                 let data = try Data(contentsOf: filePath!)
@@ -86,9 +103,8 @@ class PlanetManager {
                 print("Error decoding items, \(error)")
             }
         }
-}
-
-func saveItems(_ items: [PlanetModel], to filePath: URL? ){
+        
+        func saveItems(_ items: [PlanetModel], to filePath: URL? ){
             let encoder = PropertyListEncoder()
             do {
                 let data = try encoder.encode(items)
@@ -97,3 +113,5 @@ func saveItems(_ items: [PlanetModel], to filePath: URL? ){
                 print("Error encoding items, \(error)")
             }
         }
+    
+}

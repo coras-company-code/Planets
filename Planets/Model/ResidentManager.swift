@@ -8,20 +8,35 @@
 import Foundation
 
 extension PlanetManager {
-    
-    func fetchResidents(urls: [String]) -> [ResidentModel] {
-        var residents: [ResidentModel] = []
+  
+    func fetchResidents(urls: [String], completion: @escaping ([ResidentModel]?) -> ()) {
+       
             for url in urls {
                 let urlString = url
                 performResidentRequest(urlString: urlString)  { (resident) in
+                    var residents: [ResidentModel] = []
                     if resident != nil {
                         residents.append(resident!) //print(resident!) residents are adding to the array
                     }
+                    completion(residents)
                 }
             }
-        print(residents) //how do i get whats above out to here? (i.e the apending residents)
-        return residents
     }
+    
+    //Before
+//    func fetchResidents(urls: [String]) -> [ResidentModel] {
+//        var residents: [ResidentModel] = []
+//            for url in urls {
+//                let urlString = url
+//                performResidentRequest(urlString: urlString)  { (resident) in
+//                    if resident != nil {
+//                        residents.append(resident!) //print(resident!) residents are adding to the array
+//                    }
+//                }
+//            }
+//        print(residents) //how do i get whats above out to here? (i.e the apending residents)
+//        return residents
+//    }
     
     func performResidentRequest(urlString: String, completion: @escaping (ResidentModel?) -> ())  {
 
