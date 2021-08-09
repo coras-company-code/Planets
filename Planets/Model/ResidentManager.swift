@@ -23,21 +23,6 @@ extension PlanetManager {
             }
     }
     
-    //Before
-//    func fetchResidents(urls: [String]) -> [ResidentModel] {
-//        var residents: [ResidentModel] = []
-//            for url in urls {
-//                let urlString = url
-//                performResidentRequest(urlString: urlString)  { (resident) in
-//                    if resident != nil {
-//                        residents.append(resident!) //print(resident!) residents are adding to the array
-//                    }
-//                }
-//            }
-//        print(residents) //how do i get whats above out to here? (i.e the apending residents)
-//        return residents
-//    }
-    
     func performResidentRequest(urlString: String, completion: @escaping (ResidentModel?) -> ())  {
 
         if let url = URL(string: urlString) {

@@ -69,22 +69,6 @@ class PlanetManager {
             for planet in decodedData.results {
                     planets.append(planet)
                 }
-            
-//            //isolating one planet to test it is working:
-//            let result = decodedData.results[0]
-//            //let residents: [ResidentModel] = []
-//            let residents = fetchResidents(urls: result.residentURLs, completion: <#([ResidentModel?]) -> ()#>) //this will return an array
-//            print(residents)
-//            let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
-//            planets.append(planet)
-            
-            //once working I will use this code:
-//            for result in decodedData.results {
-//                let residents: [ResidentModel] = []
-//                //let residents = fetchResidents(urls: result.residentURLs) //this will return an array
-//                let planet = PlanetModel(name: result.name, climate: result.climate, gravity: result.gravity, population: result.gravity, residentURLs: result.residentURLs, residentDetails: residents)
-//                planets.append(planet)
-//            }
         } catch {
             print("Parsing Error:\(error)")
         }
