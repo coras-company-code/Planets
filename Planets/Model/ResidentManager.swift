@@ -8,23 +8,27 @@
 import Foundation
 
 extension PlanetManager {
-  
-    func fetchResidents(urls: [String], completion: @escaping ([ResidentModel]) -> ()) {
-       
-            for url in urls {
-                let urlString = url
-                performResidentRequest(urlString: urlString)  { (resident) in
-                    var residents: [ResidentModel] = []
-                    
-                    if resident != nil {
-                        residents.append(resident!)
-                        
-                    }
-                    completion(residents)
-                    
-                }
-            }
-    }
+//
+//    func fetchResidents(url: String, completion: @escaping (ResidentModel) -> ()) {
+//        let urlString = url
+//        performRequest(urlString: urlString) { (resident) in
+//            completion(resident)
+//        }
+            
+//            for url in urls {
+//                let urlString = url
+//                performResidentRequest(urlString: urlString)  { (resident) in
+//                    var residents: [ResidentModel] = []
+//
+//                    if resident != nil {
+//                        residents.append(resident!)
+//
+//                    }
+//                    completion(residents)
+//
+//                }
+//            }
+    //}
     
     func performResidentRequest(urlString: String, completion: @escaping (ResidentModel?) -> ())  {
 

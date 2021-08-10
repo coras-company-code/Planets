@@ -30,16 +30,57 @@ class PlanetsViewController: UIViewController {
             
             self.assignResidents(to: planets) {(planetsWithResidents) in
                 if !planetsWithResidents.isEmpty {
+                    print(planetsWithResidents)
                     self.planets = planetsWithResidents
+                    
                 }
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+                
+               
             }
         }
         
     }
+    
+    func assignResidents(to planetsWithoutResidents: [PlanetModel], completion: @escaping ([PlanetModel]) -> ())  {
+        var planets: [PlanetModel] = []
+        for planet in planetsWithoutResidents {
+            returnResidentArray(residentURls: planet.residentURLs) { (residents) in
+                let newPlanet = self.combine(planet: planet, residents: residents)
+                planets.append(newPlanet)
+                
+            }
+        }
+        completion(planets)
+    }
+    
+    func returnResidentArray(residentURls: [String], completion: @escaping ([ResidentModel]) -> ()) {
+        var residents: [ResidentModel] = []
+        for url in residentURls {
+            self.planetManager.performResidentRequest(urlString: url) {(resident) in
+                if resident != nil {
+                residents.append(resident!)
+                //print(residents)
+                completion(residents)
+                }
+            }
+        }
+        //return residents
+    }
+    
+    func combine(planet: PlanetModel, residents: [ResidentModel]) -> PlanetModel {
+        let planet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
+        print(planet)
+        return planet
+    }
+    
+   
+    
+    
+    
+    //fetch them
 }
 
 // MARK:- TableView Methods
@@ -93,19 +134,6 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
     func setupCells(tableView: UITableView) {
         tableView.register((UINib(nibName: K.CellIdentifiers.nothingFoundCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.nothingFoundCell)
         tableView.register((UINib(nibName: K.CellIdentifiers.loadingCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.loadingCell)
-    }
-    
-    func assignResidents(to planetsWithoutResidents: [PlanetModel], completion: @escaping ([PlanetModel]) -> ())  {
-        var planets: [PlanetModel] = []
-        for planet in planetsWithoutResidents {
-            self.planetManager.fetchResidents(urls: planet.residentURLs) {(residents) in
-            let newPlanet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
-                planets.append(newPlanet)
-            }
-        }
-        completion(planets)
-        
-        
     }
 }
 
