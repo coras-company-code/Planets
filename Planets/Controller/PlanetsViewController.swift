@@ -21,12 +21,24 @@ class PlanetsViewController: UIViewController {
         setupCells(tableView: tableView)
         //planetManager.delegate = self
 //        planetManager.loadItems(from: dataFilePath)
+        
         planetManager.fetchPlanets() { (planets) in //this needs to save and load inside this function
-        self.planets = planets
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+//            self.planets = planets
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+            
+            self.assignResidents(to: planets) {(planetsWithResidents) in
+                if !planetsWithResidents.isEmpty {
+                    self.planets = planetsWithResidents
+                }
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
+        
     }
 }
 
@@ -50,7 +62,8 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: K.CellIdentifiers.nothingFoundCell, for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.CellIdentifiers.planetCell, for: indexPath)
-            cell.textLabel?.text = planets[indexPath.row].name
+            let planet = planets[indexPath.row]
+            cell.textLabel?.text = planet.name
             return cell
         }
     }
@@ -72,6 +85,7 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             let indexPath = sender as! IndexPath
             let planet = planets[indexPath.row]
             planetViewController.planet = planet
+            
         }
     }
     
@@ -79,6 +93,19 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
     func setupCells(tableView: UITableView) {
         tableView.register((UINib(nibName: K.CellIdentifiers.nothingFoundCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.nothingFoundCell)
         tableView.register((UINib(nibName: K.CellIdentifiers.loadingCell, bundle: nil)), forCellReuseIdentifier: K.CellIdentifiers.loadingCell)
+    }
+    
+    func assignResidents(to planetsWithoutResidents: [PlanetModel], completion: @escaping ([PlanetModel]) -> ())  {
+        var planets: [PlanetModel] = []
+        for planet in planetsWithoutResidents {
+            self.planetManager.fetchResidents(urls: planet.residentURLs) {(residents) in
+            let newPlanet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
+                planets.append(newPlanet)
+            }
+        }
+        completion(planets)
+        
+        
     }
 }
 

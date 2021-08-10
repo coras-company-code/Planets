@@ -17,7 +17,7 @@ struct PlanetModel: Codable {
     let gravity: String
     let population: String
     let residentURLs: [String]
-    let residentDetails: [ResidentModel]?
+    var residentDetails: [ResidentModel]?
     
     enum CodingKeys: String, CodingKey {
         case name

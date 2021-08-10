@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
             if planet != nil {
                 updateUI() }
         }
+    
         
         func updateUI() {
             nameLabel.text = planet.name
