@@ -27,26 +27,10 @@ class PlanetManager {
         let urlString = "\(planetsURL)page=\(pageNumber)"
         performRequest(urlString: urlString) { (parsedDataArray) in
             
-            
             if let parsedData = parsedDataArray as? [PlanetModel]  {
                 completion(parsedData)
             }
-//            if let parsedData = parsedDataArray as? [PlanetModel]  {
-//                var planets: [PlanetModel] = []
-//                //let planet = parsedData[0]
-//                for planet in parsedData {
-//                    self.fetchResidents(urls: planet.residentURLs) { (residents) in
-//                            let planet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
-//                            planets.append(planet)
-//                            completion(planets)
-//                        print(planets)
-//                        //cant access:
-//                       // print(planet.residentDetails?[1].gender!)
-//                        //print(residents)
-//                    }
-//                }
-//
-//            }
+
             self.performedRequest = true
             self.isLoading = false
         }
