@@ -12,6 +12,7 @@ class PlanetsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var planetManager = PlanetManager()
     var planets: [PlanetModel] = []
+    var planetsAndResidents: [PlanetModel] = []
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
@@ -24,13 +25,23 @@ class PlanetsViewController: UIViewController {
         
         planetManager.fetchPlanets() { (planets) in //this needs to save and load inside this function
             self.planets = planets
-            //planetManager.assignResidents(to: planets)
+            
+            //it doesnt work as cant append them to the array
+            //cant append the seperate results, to the array i.e when a planet returns, i cant append them all to an array
+            //maybe theres a way of having a return
+            for planet in planets {
+                self.planetManager.assignResidents(to: planet) { (planett) in
+                    print(planett)
+                    self.planetsAndResidents.append(planett)
+                    print(self.planetsAndResidents)
+                }
+                
+            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-    
 }
 
 // MARK:- TableView Methods
@@ -74,8 +85,9 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             let planetViewController = segue.destination
                 as! DetailViewController
             let indexPath = sender as! IndexPath
-            let planet = planets[indexPath.row]
+            let planet = planetsAndResidents[indexPath.row]
             planetViewController.planet = planet
+           // planetViewController.pl = planet
             
         }
     }

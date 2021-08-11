@@ -8,27 +8,46 @@
 import Foundation
 
 extension PlanetManager {
-//
-//    func fetchResidents(url: String, completion: @escaping (ResidentModel) -> ()) {
-//        let urlString = url
-//        performRequest(urlString: urlString) { (resident) in
-//            completion(resident)
-//        }
+
+    
+    //This accepts one planet and returns as a new planetModel - leaves the looping through the planets for where its called
+    // as looping was returning multiple of each planet 
+    func assignResidents(to planet: PlanetModel, completion: @escaping (PlanetModel) -> ())   {
+        //var planets: [PlanetModel] = []
+        fetchReidents(residentURls: planet.residentURLs) { (parsedResidents) in
+            let newPlanet = self.combine(planet: planet, residents: parsedResidents)
+            //print(newPlanet)
+            completion(newPlanet)
             
-//            for url in urls {
-//                let urlString = url
-//                performResidentRequest(urlString: urlString)  { (resident) in
-//                    var residents: [ResidentModel] = []
-//
-//                    if resident != nil {
-//                        residents.append(resident!)
-//
-//                    }
-//                    completion(residents)
-//
-//                }
-//            }
-    //}
+        }
+    }
+    
+    //This one accepts all the planets, and returns all the new planets in an array
+    func assignResidents(to planets: [PlanetModel], completion: @escaping ([PlanetModel]) -> ())   {
+        var planets: [PlanetModel] = []
+        
+        for planet in planets {
+            fetchReidents(residentURls: planet.residentURLs) { (parsedResidents) in
+                let newPlanet = self.combine(planet: planet, residents: parsedResidents)
+                planets.append(newPlanet)
+                completion(planets)
+            }
+        }
+    }
+    
+    //return array of resident Models (objects)
+    func fetchReidents(residentURls: [String], completion: @escaping ([ResidentModel]) -> ()) {
+        var residents: [ResidentModel] = []
+        for url in residentURls {
+            self.performResidentRequest(urlString: url) {(resident) in
+                if resident != nil {
+                residents.append(resident!)
+                //print(residents)
+                completion(residents)
+                }
+            }
+        }
+    }
     
     func performResidentRequest(urlString: String, completion: @escaping (ResidentModel?) -> ())  {
 
@@ -61,19 +80,7 @@ extension PlanetManager {
     
   
     
-    func returnResidentArray(residentURls: [String], completion: @escaping ([ResidentModel]) -> ()) {
-        var residents: [ResidentModel] = []
-        for url in residentURls {
-            self.performResidentRequest(urlString: url) {(resident) in
-                if resident != nil {
-                residents.append(resident!)
-                //print(residents)
-                completion(residents)
-                }
-            }
-        }
-        //return residents
-    }
+
     
 //    func combine(planet: PlanetModel, residents: [ResidentModel]) -> PlanetModel {
 //        let planet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
@@ -87,24 +94,5 @@ extension PlanetManager {
         return planet
     }
     
-    func assignResidents(to planetsWithoutResidents: [PlanetModel])  {
-        //var planets: [PlanetModel] = []
-        var residents: [ResidentModel] = []
-        for planet in planetsWithoutResidents {
-            planetManager.returnResidentArray(residentURls: planet.residentURLs) { (residentss) in
-                residents = residentss
-                let newPlanet = self.planetManager.combine(planet: planet, residents: residentss)
-                print(self.planets)
-                self.planets.append(newPlanet)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            }
-        }
-       
-       // print(planets)
-        //return planets
-        
-    }
+
 }
