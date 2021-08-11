@@ -24,21 +24,21 @@ class PlanetsViewController: UIViewController {
 //        planetManager.loadItems(from: dataFilePath)
         
         planetManager.fetchPlanets() { (planets) in //this needs to save and load inside this function
-            self.planets = planets
+            self.planets = planets //this would happen after with new planets (see below comments)
             
-            //it doesnt work as cant append them to the array
-            //cant append the seperate results, to the array i.e when a planet returns, i cant append them all to an array
-            //maybe theres a way of having a return
             for planet in planets {
                 self.planetManager.assignResidents(to: planet) { (planett) in
-                    print(planett)
+                    //ideally want to add these new planets to an array, and then after completion, set self.planets to this array
+                    //is there away of having a return from the completion??
+                    //as i want the array with the new planets with residents to be set as the self.planets *(this needs to happen outside the for loop but after completion)*
+                    //then wouldnt need two seperate arrays, i.e planets and planetsWithResidents
                     self.planetsAndResidents.append(planett)
-                    print(self.planetsAndResidents)
+                    //self.planets = self.planetsAndResidents //this works then crashes
                 }
-                
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+                //want the array after the looping and completion to be here to print and set as planets
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -85,9 +85,8 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             let planetViewController = segue.destination
                 as! DetailViewController
             let indexPath = sender as! IndexPath
-            let planet = planetsAndResidents[indexPath.row]
+            let planet = planetsAndResidents[indexPath.row]//this will the be changed back to planets array
             planetViewController.planet = planet
-           // planetViewController.pl = planet
             
         }
     }

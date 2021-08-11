@@ -13,10 +13,8 @@ extension PlanetManager {
     //This accepts one planet and returns as a new planetModel - leaves the looping through the planets for where its called
     // as looping was returning multiple of each planet 
     func assignResidents(to planet: PlanetModel, completion: @escaping (PlanetModel) -> ())   {
-        //var planets: [PlanetModel] = []
         fetchReidents(residentURls: planet.residentURLs) { (parsedResidents) in
             let newPlanet = self.combine(planet: planet, residents: parsedResidents)
-            //print(newPlanet)
             completion(newPlanet)
             
         }
@@ -25,7 +23,6 @@ extension PlanetManager {
     //This one accepts all the planets, and returns all the new planets in an array
     func assignResidents(to planets: [PlanetModel], completion: @escaping ([PlanetModel]) -> ())   {
         var planets: [PlanetModel] = []
-        
         for planet in planets {
             fetchReidents(residentURls: planet.residentURLs) { (parsedResidents) in
                 let newPlanet = self.combine(planet: planet, residents: parsedResidents)
@@ -77,16 +74,6 @@ extension PlanetManager {
              return nil
          }
      }
-    
-  
-    
-
-    
-//    func combine(planet: PlanetModel, residents: [ResidentModel]) -> PlanetModel {
-//        let planet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
-//        print(planet)
-//        return planet
-//    }
     
     func combine(planet: PlanetModel, residents: [ResidentModel]) -> PlanetModel {
         let planet = PlanetModel(name: planet.name, climate: planet.climate, gravity: planet.gravity, population: planet.gravity, residentURLs: planet.residentURLs, residentDetails: residents)
