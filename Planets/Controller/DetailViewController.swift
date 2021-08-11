@@ -24,12 +24,12 @@ class DetailViewController: UIViewController {
             if planet != nil {
                 updateUI() }
         }
-        
+    
         func updateUI() {
             nameLabel.text = planet.name
             climateLabel.text = planet.climate
             gravityLabel.text = planet.gravity
             populationLabel.text = planet.population
+            print(planet.residentDetails)
         }
-
 }

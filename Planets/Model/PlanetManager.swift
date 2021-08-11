@@ -7,87 +7,70 @@
 
 import Foundation
 
-protocol PlanetManagerDelegate {
+protocol PlanetManagerDelegate: AnyObject {
     func didUpdatePlanets(planets: [PlanetModel])
 }
 
+
+//enum NetworkError: Error {
+//    case networkError
+//}
+
 class PlanetManager {
-    var delegate: PlanetManagerDelegate?
+    weak var delegate: PlanetManagerDelegate?
     let planetsURL = K.planetsURL
     let pageNumber = 1
-    var performedRequest = false
+    var performedRequest = false //Note to self: do i need both of these?
     var isLoading = true
    
-    func fetchPlanets() {
+    func fetchPlanets(completion: @escaping ([PlanetModel]) -> Void) {
         let urlString = "\(planetsURL)page=\(pageNumber)"
-        performRequest(urlString: urlString)
+        performRequest(urlString: urlString) { (parsedDataArray) in
+            
+            if let parsedData = parsedDataArray as? [PlanetModel]  {
+                completion(parsedData)
+            }
+
+            self.performedRequest = true
+            self.isLoading = false
+        }
     }
     
-    func performRequest(urlString: String) {
-        
+    func performRequest(urlString: String, completion: @escaping ([Any]?) -> Void)  {
         if let url = URL(string: urlString) {
-            
             let session = URLSession(configuration: .default)
-            
             let task = session.dataTask(with: url) { (data, response, error) in
-                
                 if error != nil {
                     print(error!)
-                    self.delegate?.didUpdatePlanets(planets: [])
-                    self.performedRequest = true //should these be in the view controller?
-                    self.isLoading = false //should these be in the view controller?
+                    completion(nil)
                     return
                 }
-                
                 if let planets = self.parseJSON(planetsData: data!) {
-                    self.performedRequest = true //should these be in the view controller?
-                    self.isLoading = false //should these be in the view controller?
-                    self.delegate?.didUpdatePlanets(planets: planets)
+                    completion(planets)
                 }
-                
-                
             }
             task.resume()
         }
     }
     
     func parseJSON(planetsData: Data) -> [PlanetModel]? {
-        
         var planets: [PlanetModel] = []
         let decoder = JSONDecoder()
         do {
-            
             let decodedData = try decoder.decode(Results.self, from: planetsData)
             
             for planet in decodedData.results {
-                planets.append(planet)
-            }
-            
-            //            if decodedData.count > 0 {
-            //                self.pageNumber += 1
-            //                planets += decodedData
-            //            } else {
-            //                resultsToFetch = false
-            //                print("No (additional) results returned")
-            //            }
+                    planets.append(planet)
+                }
         } catch {
             print("Parsing Error:\(error)")
         }
-        
         return planets
-        
-        //    func fetchAdditonalResults(row: Int, lastPlanet: Int) {
-        //        if row == lastPlanet - 1 && resultsToFetch {
-        //            fetchPlanets()
-        //        }
-        //    }
     }
-    
-    
-    
+ 
     //MARK: - Model Manupulation Methods
 
-    func loadItems(from filePath: URL?) {
+        func loadItems(from filePath: URL?) {
             let decoder = PropertyListDecoder()
             do {
                 let data = try Data(contentsOf: filePath!)
@@ -97,9 +80,8 @@ class PlanetManager {
                 print("Error decoding items, \(error)")
             }
         }
-}
-
-func saveItems(_ items: [PlanetModel], to filePath: URL? ){
+        
+        func saveItems(_ items: [PlanetModel], to filePath: URL? ){
             let encoder = PropertyListEncoder()
             do {
                 let data = try encoder.encode(items)
@@ -108,3 +90,5 @@ func saveItems(_ items: [PlanetModel], to filePath: URL? ){
                 print("Error encoding items, \(error)")
             }
         }
+    
+}

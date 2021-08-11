@@ -12,6 +12,7 @@ class PlanetsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var planetManager = PlanetManager()
     var planets: [PlanetModel] = []
+    var planetsAndResidents: [PlanetModel] = []
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
@@ -19,10 +20,27 @@ class PlanetsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setupCells(tableView: tableView)
-        planetManager.delegate = self
-        planetManager.loadItems(from: dataFilePath)
-        planetManager.fetchPlanets()
-       
+        //planetManager.delegate = self
+//        planetManager.loadItems(from: dataFilePath)
+        
+        planetManager.fetchPlanets() { (planets) in //this needs to save and load inside this function
+            self.planets = planets //this would happen after with new planets (see below comments)
+            
+            for planet in planets {
+                self.planetManager.assignResidents(to: planet) { (planett) in
+                    //ideally want to add these new planets to an array, and then after completion, set self.planets to this array
+                    //is there away of having a return from the completion??
+                    //as i want the array with the new planets with residents to be set as the self.planets *(this needs to happen outside the for loop but after completion)*
+                    //then wouldnt need two seperate arrays, i.e planets and planetsWithResidents
+                    self.planetsAndResidents.append(planett)
+                    //self.planets = self.planetsAndResidents //this works then crashes
+                }
+                //want the array after the looping and completion to be here to print and set as planets
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 }
 
@@ -46,7 +64,8 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: K.CellIdentifiers.nothingFoundCell, for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.CellIdentifiers.planetCell, for: indexPath)
-            cell.textLabel?.text = planets[indexPath.row].name
+            let planet = planets[indexPath.row]
+            cell.textLabel?.text = planet.name
             return cell
         }
     }
@@ -66,8 +85,9 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
             let planetViewController = segue.destination
                 as! DetailViewController
             let indexPath = sender as! IndexPath
-            let planet = planets[indexPath.row]
+            let planet = planetsAndResidents[indexPath.row]//this will the be changed back to planets array
             planetViewController.planet = planet
+            
         }
     }
     
@@ -78,19 +98,17 @@ extension PlanetsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK:- Planet Manager Delegate
-extension PlanetsViewController: PlanetManagerDelegate {
-    
-    func didUpdatePlanets(planets: [PlanetModel]) {
-        if planets.count > 0 {
-            self.planets = planets
-            saveItems(planets, to: dataFilePath)
-        }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-}
+//// MARK:- Planet Manager Delegate
+//extension PlanetsViewController: PlanetManagerDelegate {
+//    //this used to accept nil as a paramenter and then check for it but, this functuon shouldnt be called if its is nil!
+//    func didUpdatePlanets(planets: [PlanetModel]) {
+//        self.planets = planets
+//      //  saveItems(planets, to: dataFilePath)
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+//}
 
 
 
