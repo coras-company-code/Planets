@@ -111,15 +111,9 @@ Run-Time Errors: Errors which occur during program execution(run-time) after suc
 **A: True**.    
 *are to answer this with T or F. But I see it as functions can have one return TYPE, in this case tuple. And multiple return VALUES (in the tuple)*. 
 
-
-
 ## Functions (keywords)
-inout parameters 
-https://www.hackingwithswift.com/sixty/5/10/inout-parameters
-
----
-
 **Q: Which keyword is used on a function inside an Enumeration to indicate that the function will modify itself?**
+(Options: mutable, mutating, var, inout)
 
 **A: mutating**
 _orgially thought it was only structs:_
@@ -128,6 +122,13 @@ but in these docs: can see an example of an enum has a fucntion with the keyword
 https://docs.swift.org/swift-book/LanguageGuide/Methods.html
 
 !!need to look into this topic in these docs more
+
+inout parameters 
+https://www.hackingwithswift.com/sixty/5/10/inout-parameters
+
+---
+
+
 
 
 ## Enumerations 
