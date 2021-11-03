@@ -98,10 +98,14 @@ optionals make map complicated/dangerous if the transformed array now stores opt
 Some uses of flatMap() are being depreciated:
 https://useyourloaf.com/blog/replacing-flatmap-with-compactmap/
 
-## Debugging
+## Testing Debugging
+# Errors
 Compile-Time Errors: Errors that occur when you violate the rules of writing syntax are known as Compile-Time errors
 
-Run-Time Errors: Errors which occur during program execution(run-time) after successful compilation are called run-time errors. 
+Run-Time Errors: Errors which occur during program execution(run-time) after successful compilation are called run-time errors.
+
+# XCTAssertTrue
+This function generates a failure when expression == false and is equivalent to XCTAssertTrue.
 
 ## Functions - multiple return values
 ![image](https://user-images.githubusercontent.com/44570720/140054513-d1bf1e9f-76ad-4714-94d5-af98b5d804a9.png)
@@ -128,11 +132,47 @@ https://www.hackingwithswift.com/sixty/5/10/inout-parameters
 
 ---
 
+## Optionals
+Optionals- are denoted by:  
+![image](https://user-images.githubusercontent.com/44570720/140083161-4f54295c-2b8e-4ce4-8bef-bf1c8eb1e711.png)
 
+Optional chaining - You specify optional chaining by placing a question mark (?) after the optional value on which you wish to call a property, method or subscript if the optional is non-nil.
 
 
 ## Enumerations 
 
 
 ## Storyboards
-Why are IBOutlets declared with a weak attribute by default?
+---
+
+**Q: Why are IBOutlets declared with a weak attribute by default?**
+a. To increase loading speed. 
+b. To save memory. 
+c. IBOutlets are not declared with the wek atribute by default.  
+d. They are already retained by the view
+
+**A: Not sure but think it must be D**  
+Reasons:
+https://developer.apple.com/forums/thread/51044
+'If the outlet is referencing a ui object in the view heirarchy then I would make it weak. The view heirarchy already has a strong reference. Might help avoid reference cycles when your dismissing the view controller.'
+https://stackoverflow.com/questions/24011575/what-is-the-difference-between-a-weak-reference-and-an-unowned-reference
+'A weak reference allows the possibility of it to become nil (this happens automatically when the referenced object is deallocated)'
+
+---
+**Q:**
+True or false to each of these statements:
+- IBAction is a type qualifier used by IB to enable connection user expierence elements and app code - TRUE
+- IBAction is a macro defined to denote a method that can be referred to in IB - Unsure
+- IBAction resolves to void - unsure 
+
+**A:**
+https://stackoverflow.com/questions/1643007/iboutlet-and-ibaction
+IBAction and IBOutlet are macros defined to denote variables and methods that can be referred to in Interface Builder.
+
+IBAction resolves to void and IBOutlet resolves to nothing, but they signify to Xcode and Interface builder that these variables and methods can be used in Interface builder to link UI elements to your code.
+
+If you're not going to be using Interface Builder at all, then you don't need them in your code, but if you are going to use it, then you need to specify IBAction for methods that will be used in IB and IBOutlet for objects that will be used in IB.
+
+---
+
+
