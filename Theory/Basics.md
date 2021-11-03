@@ -180,4 +180,12 @@ If you're not going to be using Interface Builder at all, then you don't need th
 | :------------- | :----------: |
 | ![image](https://user-images.githubusercontent.com/44570720/140099342-c81f53cb-bf72-412b-b9da-1180f5016be4.png) it could also be the bottom one but the first one meets the criteria first|  ![image](https://user-images.githubusercontent.com/44570720/140098379-91317e25-c319-49bd-aecf-730be9a158f5.png)
 
+## Swift integers
+*think this is related to storing the numbers in binary, the larger the number the more bits you need*
+UInt - On 32-bit platforms, UInt is the same size as UInt32, and on 64-bit platforms, UInt is the same size as UInt64.
+
+https://gist.github.com/kharrison/0879fc225121edaec903799cf0afb091
+![image](https://user-images.githubusercontent.com/44570720/140100773-9160b5c1-b0be-4dfe-b9f4-c5724485f5d2.png)
+
+
 
