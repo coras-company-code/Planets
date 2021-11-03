@@ -51,7 +51,37 @@ The best laid schemes
 Higher order functions are simply functions that operate on other functions by either taking a function as an argument, or returning a function. Swift’s Array type has a few methods that are higher order functions: sorted, map, filter, and reduce. 
 These methods use **closures** to allow us to pass in functionality that can then determine how we want the method to work on an array of objects.
 
-**Map**
+**Converting functions into closures**
+remove func keyword and name of the function. 
+![image](https://user-images.githubusercontent.com/44570720/140043425-71f88474-ee8b-47ad-bf9b-84eaeefabdd8.png)
+move the curly bracket to the front and replace it with the keyword in
+![image](https://user-images.githubusercontent.com/44570720/140043591-614a3b2d-37ec-4423-a84c-28fa3c42170c.png)
+Due to swift's type inference, you can remove the data types for the parameters and the output (i.e :Int, and -> Int). 
+*this screenshot is slightly confusing as it nots showing a function with a function we are converting into a closure *. 
+![image](https://user-images.githubusercontent.com/44570720/140044854-9a1f3b07-ee39-4f0a-a8ba-d965da4cdc4c.png)
+can also remove the return keyword and have it on oneline
+![image](https://user-images.githubusercontent.com/44570720/140045277-f74f38e4-1747-40bd-83e8-6bf8944e966b.png)
+then remove parameters and replace with anonymous ones
+![image](https://user-images.githubusercontent.com/44570720/140045533-bd8dcd91-ea7d-4324-8cf0-7c71752bd9a2.png)
+$0 means first parameter 
+$1 means second parameter 
+![image](https://user-images.githubusercontent.com/44570720/140046252-36a8bf92-ba7b-4f86-81e1-c9f0b8a1c042.png)
+
+trailing closure - theres a rule that if the last parameter of a function is a closure, you can close the parameters and put the closure on the outside:  
+![image](https://user-images.githubusercontent.com/44570720/140049731-016ba592-72b2-4037-a376-309ece0292f6.png). 
+
+---
+
+**Q: Identify the output for this code:**
+
+**A: Compile time error - as Higher order functions (closures on arrays) only take one parameter/argument at a time**
+
+![image](https://user-images.githubusercontent.com/44570720/140053492-3696ffb6-8e6d-429d-ab24-6c24356fcf8f.png)
+
+---
+
+**MORE ON Map**
+
 map() will take a value out of its container, transform it using the code you specify, then put it back in its container. 
 
 the orginal array may contain optionals to be tranformed (nil will result in nil),
