@@ -108,8 +108,7 @@ Run-Time Errors: Errors which occur during program execution(run-time) after suc
 ---
 **Q: We can create a function with multiple return values, T or F**.  
 
-**A: True**.  
-(options: Background State, Active State, Suspended State, Inactive State).   
+**A: True**.    
 *are to answer this with T or F. But I see it as functions can have one return TYPE, in this case tuple. And multiple return VALUES (in the tuple)*. 
 
 
@@ -121,6 +120,7 @@ https://www.hackingwithswift.com/sixty/5/10/inout-parameters
 ---
 
 **Q: Which keyword is used on a function inside an Enumeration to indicate that the function will modify itself?**
+
 **A: mutating**
 _orgially thought it was only structs:_
 The mutating keyword is only required if you are changing any state contained within the struct. Since Swift structs are immutable objects, calling a mutating function actually returns a new struct in-place (much like passing an inout parameter to a function). The mutating keyword lets callers know that the method is going to make the value change. 
