@@ -2,8 +2,14 @@
 
 
 ## View Controller Lifecycle 
-viewDidLoad, viewDidDisappear etc
+
 <img width="1088" alt="Screenshot 2021-07-27 at 11 41 09" src="https://user-images.githubusercontent.com/44570720/127141305-51179e9d-4714-4485-89b0-9b757e518c7f.png">
+
+**Q: What's the order**
+
+**A:**
+
+Option C: viewDidLoad, viewWillAppear, viewDidAppear viewWillDisappear, viewDidDisappear etc
 
 
 ## Application State/Lifecycle
@@ -83,6 +89,9 @@ trailing closure - theres a rule that if the last parameter of a function is a c
 **MORE ON Map**
 
 map() will take a value out of its container, transform it using the code you specify, then put it back in its container. 
+example:  
+![image](https://user-images.githubusercontent.com/44570720/140163466-c3bc3eee-12f2-4b17-af4b-2ed4849e2fe6.png)
+
 
 the orginal array may contain optionals to be tranformed (nil will result in nil),
 the transformation may result in an optional, e.g convert String to Int: Int("2") -> 2, Int("Cat") -> nil
@@ -138,6 +147,9 @@ Optionals- are denoted by:
 
 Optional chaining - You specify optional chaining by placing a question mark (?) after the optional value on which you wish to call a property, method or subscript if the optional is non-nil.
 
+## Classes vs Structs
+classes are passed by reference (**reference NOT copy**)
+structs passed by value (copy)
 
 ## Enumerations 
 
@@ -174,11 +186,12 @@ IBAction resolves to void and IBOutlet resolves to nothing, but they signify to 
 If you're not going to be using Interface Builder at all, then you don't need them in your code, but if you are going to use it, then you need to specify IBAction for methods that will be used in IB and IBOutlet for objects that will be used in IB.
 
 ---
-## Switch 
+## Switch Statements
 
-| Questions    |  Syntax   |
-| :------------- | :----------: |
-| ![image](https://user-images.githubusercontent.com/44570720/140099342-c81f53cb-bf72-412b-b9da-1180f5016be4.png) it could also be the bottom one but the first one meets the criteria first|  ![image](https://user-images.githubusercontent.com/44570720/140098379-91317e25-c319-49bd-aecf-730be9a158f5.png)
+| Questions  |     |  Syntax   |
+| :---------:| :----------: | :---------: |
+| ![image](https://user-images.githubusercontent.com/44570720/140099342-c81f53cb-bf72-412b-b9da-1180f5016be4.png) it could also be the bottom one but the first one meets the criteria first | ![image](https://user-images.githubusercontent.com/44570720/140180348-191e56bb-4268-4028-95c1-4e722116e6f2.png) |  ![image](https://user-images.githubusercontent.com/44570720/140098379-91317e25-c319-49bd-aecf-730be9a158f5.png) 
+
 
 ## Swift integers
 *think this is related to storing the numbers in binary, the larger the number the more bits you need*
@@ -192,5 +205,16 @@ The final keyword is a restriction on a class, method, or property that indicate
 
 A lazy stored property is a property whose initial value isn't calculated until the first time it's used.
 (https://docs.swift.org/swift-book/LanguageGuide/Properties.html#:~:text=A%20lazy%20stored%20property%20is,the%20first%20time%20it's%20used.&text=You%20must%20always%20declare%20a,until%20after%20instance%20initialization%20completes.)
+
+---
+**Q: Which of these is not a valid property declaration in Swift?**  
+Answers:  
+final let x = 0  
+**A: final lazy let x = 0**  
+final lazy var x = 0   
+final var x = 0  
+
+'cant use a let with a lazy' https://abhimuralidharan.medium.com/lazy-var-in-ios-swift-96c75cb8a13a
+I think it must be because lazy isnt calculated until later, and let means constant so you CANT change it.
 
 
