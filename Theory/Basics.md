@@ -103,13 +103,31 @@ Compile-Time Errors: Errors that occur when you violate the rules of writing syn
 
 Run-Time Errors: Errors which occur during program execution(run-time) after successful compilation are called run-time errors. 
 
+## Functions - multiple return values
+![image](https://user-images.githubusercontent.com/44570720/140054513-d1bf1e9f-76ad-4714-94d5-af98b5d804a9.png)
+---
+**Q: We can create a function with multiple return values, T or F**.  
+
+**A: True**.  
+(options: Background State, Active State, Suspended State, Inactive State).   
+*are to answer this with T or F. But I see it as functions can have one return TYPE, in this case tuple. And multiple return VALUES (in the tuple)*. 
+
+
 
 ## Functions (keywords)
 inout parameters 
 https://www.hackingwithswift.com/sixty/5/10/inout-parameters
 
-mutating
+---
+
+**Q: Which keyword is used on a function inside an Enumeration to indicate that the function will modify itself?**
+**A: mutating**
+_orgially thought it was only structs:_
 The mutating keyword is only required if you are changing any state contained within the struct. Since Swift structs are immutable objects, calling a mutating function actually returns a new struct in-place (much like passing an inout parameter to a function). The mutating keyword lets callers know that the method is going to make the value change. 
+but in these docs: can see an example of an enum has a fucntion with the keyword
+https://docs.swift.org/swift-book/LanguageGuide/Methods.html
+
+!!need to look into this topic in these docs more
 
 
 ## Enumerations 
