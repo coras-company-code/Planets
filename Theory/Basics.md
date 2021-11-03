@@ -25,6 +25,7 @@ e.g. An iOS app can be placed into an inactive state, for example, when a call o
  Background - The app is running in the **background**, and executing code.  
  Suspended - The app is in the **background**, but no code is being execute.  
 
+---
 **Q: State of an application of the app if app in background did not recieve any event**.  
 
 **A: Suspended**.  
@@ -38,6 +39,13 @@ Is terminated and suspended the same thing?
 ## Multiline String Literals
 If you need a string that spans several lines, use a multiline string literal—a sequence of characters surrounded by three double quotation marks:
 ![image](https://user-images.githubusercontent.com/44570720/127146031-b374c04b-ea5f-487a-baa2-37ad96a93e72.png)
+
+---
+**Q: Does this create the multiline string correctly?**
+var burns = """
+The best laid schemes
+""  
+**A: False (Due to only two " at the end)**. 
 
 ## Higher Order Functions / Closures
 Higher order functions are simply functions that operate on other functions by either taking a function as an argument, or returning a function. Swift’s Array type has a few methods that are higher order functions: sorted, map, filter, and reduce. 
