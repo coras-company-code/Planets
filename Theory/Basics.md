@@ -15,20 +15,23 @@ https://developer.apple.com/documentation/uikit/app_and_environment/managing_you
 | App-Based Life-Cycle Events     | Scene-Based Life-Cycle Events     |
 | :------------- | :----------: |
 | <img width="433" alt="Screenshot 2021-07-27 at 12 09 12" src="https://user-images.githubusercontent.com/44570720/127144492-bcf0e063-1191-43df-8030-9e6ac0912845.png"> |  <img width="517" alt="Screenshot 2021-07-27 at 12 09 05" src="https://user-images.githubusercontent.com/44570720/127144511-3a189ed8-7e8e-403c-a505-20555cd088e4.png">
- |
 
-An iOS app can be placed into an 
-inactive state, for example, when a call or SMS message is received. 
-Active - The app is running in the foreground, and receiving events. 
-Background - The app is running in the background, and executing code. 
-Suspended - The app is in the background, but no code is being execute
+Non-running - The app is not running.  
+*Foreground.*  
+ Inactive - The app is running in the **foreground**. 
+e.g. An iOS app can be placed into an inactive state, for example, when a call or SMS message is received.  
+ Active - The app is running in the **foreground**, and receiving events.  
+*Background.*  
+ Background - The app is running in the **background**, and executing code.  
+ Suspended - The app is in the **background**, but no code is being execute.  
 
+**Q: State of an application of the app if app in background did not recieve any event**.  
 
-Q: State of an application of the app if app in background did not recieve any event
-A: Suspended ?
+**A: Suspended**.  
+(options: Background State, Active State, Suspended State, Inactive State).   
+*as its in the background and 'did not recieve any event' seems to mean the same as 'but no code is being execute'*. 
 
-*I know it is not Active or inactive, i think suspended as the documentation talks about responding to events, and managing and preparing the app for those states but does not discuss this when in suspended state*
-
+*questions raised*. 
 Is terminated and suspended the same thing?
 
 
