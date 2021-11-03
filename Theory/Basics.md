@@ -163,12 +163,17 @@ b. To save memory.
 c. IBOutlets are not declared with the wek atribute by default.  
 d. They are already retained by the view
 
+
 **A: Not sure but think it must be D**  
 Reasons:
 https://developer.apple.com/forums/thread/51044
 'If the outlet is referencing a ui object in the view heirarchy then I would make it weak. The view heirarchy already has a strong reference. Might help avoid reference cycles when your dismissing the view controller.'
 https://stackoverflow.com/questions/24011575/what-is-the-difference-between-a-weak-reference-and-an-unowned-reference
 'A weak reference allows the possibility of it to become nil (this happens automatically when the referenced object is deallocated)'
+
+**A: BUT found this**  
+![image](https://user-images.githubusercontent.com/44570720/140184398-5cb1e706-c3c8-47b0-b836-8db48fef6e8b.png)
+
 
 ---
 **Q:**
