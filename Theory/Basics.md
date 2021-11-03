@@ -187,5 +187,10 @@ UInt - On 32-bit platforms, UInt is the same size as UInt32, and on 64-bit platf
 https://gist.github.com/kharrison/0879fc225121edaec903799cf0afb091
 ![image](https://user-images.githubusercontent.com/44570720/140100773-9160b5c1-b0be-4dfe-b9f4-c5724485f5d2.png)
 
+## Swift Keywords
+The final keyword is a restriction on a class, method, or property that indicates that the declaration cannot be overridden (https://developer.apple.com/swift/blog/?id=27)
+
+A lazy stored property is a property whose initial value isn't calculated until the first time it's used.
+(https://docs.swift.org/swift-book/LanguageGuide/Properties.html#:~:text=A%20lazy%20stored%20property%20is,the%20first%20time%20it's%20used.&text=You%20must%20always%20declare%20a,until%20after%20instance%20initialization%20completes.)
 
 
