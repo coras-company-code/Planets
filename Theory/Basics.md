@@ -99,12 +99,12 @@ Some uses of flatMap() are being depreciated:
 https://useyourloaf.com/blog/replacing-flatmap-with-compactmap/
 
 ## Testing Debugging
-# Errors
+### Errors
 Compile-Time Errors: Errors that occur when you violate the rules of writing syntax are known as Compile-Time errors
 
 Run-Time Errors: Errors which occur during program execution(run-time) after successful compilation are called run-time errors.
 
-# XCTAssertTrue
+### XCTAssertTrue
 This function generates a failure when expression == false and is equivalent to XCTAssertTrue.
 
 ## Functions - multiple return values
@@ -174,5 +174,10 @@ IBAction resolves to void and IBOutlet resolves to nothing, but they signify to 
 If you're not going to be using Interface Builder at all, then you don't need them in your code, but if you are going to use it, then you need to specify IBAction for methods that will be used in IB and IBOutlet for objects that will be used in IB.
 
 ---
+## Switch 
+
+| Questions    |  Syntax   |
+| :------------- | :----------: |
+| ![image](https://user-images.githubusercontent.com/44570720/140099342-c81f53cb-bf72-412b-b9da-1180f5016be4.png) it could also be the bottom one but the first one meets the criteria first|  ![image](https://user-images.githubusercontent.com/44570720/140098379-91317e25-c319-49bd-aecf-730be9a158f5.png)
 
 
