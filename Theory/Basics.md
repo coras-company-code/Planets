@@ -274,6 +274,17 @@ Which is not part of Swift programming?
 
 ??What does Double... mean?
 
+Set -
+An unordered collection of unique elements.
+
+**Q: Whar is the type of String, Array and Dictionary**
+a. class
+b.structure
+c. enumeration
+d. objet
+
+**A:Structure** but what exactly is an object? - i think they are incidences (intailised, copies) of class and structs
+
 
 
 
