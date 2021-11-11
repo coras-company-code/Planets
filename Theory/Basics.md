@@ -41,10 +41,21 @@ e.g. An iOS app can be placed into an inactive state, for example, when a call o
 *questions raised*. 
 Is terminated and suspended the same thing?
 
+---
+## Frameworks
+**Q: What framework is NOT part of iOS layer Architecture: **
 
-## Multiline String Literals
-If you need a string that spans several lines, use a multiline string literal—a sequence of characters surrounded by three double quotation marks:
-![image](https://user-images.githubusercontent.com/44570720/127146031-b374c04b-ea5f-487a-baa2-37ad96a93e72.png)
+a. AppKit Framework,   
+b.Foundation Framework,   
+c. CoreMotion Framework,  
+d. UIKit Framework
+
+**A: unsure**
+a. because for macOS apps (https://developer.apple.com/documentation/appkit)
+and it isnt mentioned in the link nanda recommended: (https://www.tutorialspoint.com/apple-ios-architecture)
+
+
+
 
 ---
 **Q: Does this create the multiline string correctly?**
@@ -237,14 +248,27 @@ The one-sided range the operator has a value on only one side.
 
 ---
 
+## Attributes
+There are two kinds of attributes in Swift—those that apply to declarations and those that apply to types. An attribute provides additional information about the declaration or type.
+
+https://docs.swift.org/swift-book/ReferenceManual/Attributes.html - need to learn more on this
+
+
 ## Lexical Structure
 
 ### Integer Literals
-Underscores (_) are allowed between digits for readability, but they’re ignored and therefore don’t affect the value of the literal. Integer literals can begin with leading zeros (0), but they’re likewise ignored and don’t affect the base or value of the literal.
+Underscores _(_)_ are allowed between digits for readability, but they’re ignored and therefore don’t affect the value of the literal. Integer literals can begin with leading zeros (0), but they’re likewise ignored and don’t affect the base or value of the literal.
+
+## Multiline String Literals
+If you need a string that spans several lines, use a multiline string literal—a sequence of characters surrounded by three double quotation marks:
+![image](https://user-images.githubusercontent.com/44570720/127146031-b374c04b-ea5f-487a-baa2-37ad96a93e72.png)
 
 ## Intialization
 
 ![image](https://user-images.githubusercontent.com/44570720/141299005-f32f359e-d783-4607-8943-112bdbec98e3.png)
+
+
+
 
 
 
