@@ -267,6 +267,13 @@ If you need a string that spans several lines, use a multiline string literal—
 
 ![image](https://user-images.githubusercontent.com/44570720/141299005-f32f359e-d783-4607-8943-112bdbec98e3.png)
 
+## Miscellaneous 
+Which is not part of Swift programming?
+
+![image](https://user-images.githubusercontent.com/44570720/141346235-be67ddda-8464-40eb-a85e-f2d4ec1027ab.png)
+
+??What does Double... mean?
+
 
 
 
