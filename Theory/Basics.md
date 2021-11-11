@@ -226,4 +226,15 @@ final var x = 0
 'cant use a let with a lazy' https://abhimuralidharan.medium.com/lazy-var-in-ios-swift-96c75cb8a13a
 I think it must be because lazy isnt calculated until later, and let means constant so you CANT change it.
 
+---
+## Basic Operators
+### Range Operators
+The closed range operator (a...b) defines a range that runs from a to b, and includes the values a and b.
+The half-open range operator (a..<b) defines a range that runs from a to b.  
+The one-sided range the operator has a value on only one side.  
+ 
+![image](https://user-images.githubusercontent.com/44570720/141297296-abcd80a4-dce8-413e-af93-011d03b3dbd9.png)
+
+
+
 
