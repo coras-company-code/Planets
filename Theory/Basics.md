@@ -145,6 +145,10 @@ https://www.hackingwithswift.com/sixty/5/10/inout-parameters
 Optionals- are denoted by:  
 ![image](https://user-images.githubusercontent.com/44570720/140083161-4f54295c-2b8e-4ce4-8bef-bf1c8eb1e711.png)
 
+(Conversion of Data Types involves optionals)
+![image](https://user-images.githubusercontent.com/44570720/141295902-991e7e0d-040e-49c4-8436-a676ee917b02.png)
+
+
 Optional chaining - You specify optional chaining by placing a question mark (?) after the optional value on which you wish to call a property, method or subscript if the optional is non-nil.
 
 ## Classes vs Structs
