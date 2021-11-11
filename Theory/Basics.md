@@ -233,7 +233,19 @@ The closed range operator (a...b) defines a range that runs from a to b, and inc
 The half-open range operator (a..<b) defines a range that runs from a to b.  
 The one-sided range the operator has a value on only one side.  
  
-![image](https://user-images.githubusercontent.com/44570720/141297296-abcd80a4-dce8-413e-af93-011d03b3dbd9.png)
+![image](https://user-images.githubusercontent.com/44570720/141297296-abcd80a4-dce8-413e-af93-011d03b3dbd9.png). 
+
+---
+
+## Lexical Structure
+
+### Integer Literals
+Underscores (_) are allowed between digits for readability, but they’re ignored and therefore don’t affect the value of the literal. Integer literals can begin with leading zeros (0), but they’re likewise ignored and don’t affect the base or value of the literal.
+
+## Intialization
+
+![image](https://user-images.githubusercontent.com/44570720/141299005-f32f359e-d783-4607-8943-112bdbec98e3.png)
+
 
 
 
