@@ -87,6 +87,11 @@ $1 means second parameter
 trailing closure - theres a rule that if the last parameter of a function is a closure, you can close the parameters and put the closure on the outside:  
 ![image](https://user-images.githubusercontent.com/44570720/140049731-016ba592-72b2-4037-a376-309ece0292f6.png). 
 
+
+**Escaping closures**
+In Swift, closures are **non-escaping** by default. You use **@escaping** keyword to change this. 
+A closure is said to “escape” a function when it’s called after that function returns. 
+
 ---
 
 **Q: Identify the output for this code:**
