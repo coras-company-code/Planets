@@ -302,14 +302,21 @@ Which is not part of Swift programming?
 Set -
 An unordered collection of unique elements.
 
-**Q: Whar is the type of String, Array and Dictionary**
+**Q: What is the type of String, Array and Dictionary**
 a. class
-b.structure
+b. structure
 c. enumeration
-d. objet
+d. object
 
-**A:Structure** but what exactly is an object? - i think they are incidences (intailised, copies) of class and structs
+**A:Structure** but what exactly is an object? - 'An instance of a class is **traditionally** known as an object' (https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html)
 
+## Object Types
+enum, struct, and class
+(the name of the object type, should start with a capital letter, and curly braces:)
+![image](https://user-images.githubusercontent.com/44570720/141448954-b1b23279-147d-42ea-8a1b-2ad9c2c927a3.png)
+?? Good read to understand object types
+
+![image](https://user-images.githubusercontent.com/44570720/141449071-ca26f331-7a27-4212-87b2-e3431d7c5a9b.png)
 
 
 
