@@ -57,12 +57,7 @@ and it isnt mentioned in the link nanda recommended: (https://www.tutorialspoint
 
 
 
----
-**Q: Does this create the multiline string correctly?**
-var burns = """
-The best laid schemes
-""  
-**A: False (Due to only two " at the end)**. 
+
 
 ## Higher Order Functions / Closures
 Higher order functions are simply functions that operate on other functions by either taking a function as an argument, or returning a function. Swift’s Array type has a few methods that are higher order functions: sorted, map, filter, and reduce. 
@@ -256,6 +251,25 @@ The one-sided range the operator has a value on only one side.
 ![image](https://user-images.githubusercontent.com/44570720/141297296-abcd80a4-dce8-413e-af93-011d03b3dbd9.png). 
 
 ---
+## Strings and characters
+### Multiline String Literals
+If you need a string that spans several lines, use a multiline string literal—a sequence of characters surrounded by three double quotation marks:
+![image](https://user-images.githubusercontent.com/44570720/127146031-b374c04b-ea5f-487a-baa2-37ad96a93e72.png)
+
+### Characters
+Characters are a swift data type
+![image](https://user-images.githubusercontent.com/44570720/141447848-f4d1b555-39da-4879-9b66-83129fa6a10b.png)
+
+
+
+---
+**Q: Does this create the multiline string correctly?**
+var burns = """
+The best laid schemes
+""  
+**A: False (Due to only two " at the end)**. 
+---
+
 
 ## Attributes
 There are two kinds of attributes in Swift—those that apply to declarations and those that apply to types. An attribute provides additional information about the declaration or type.
@@ -268,13 +282,15 @@ https://docs.swift.org/swift-book/ReferenceManual/Attributes.html - need to lear
 ### Integer Literals
 Underscores _(_)_ are allowed between digits for readability, but they’re ignored and therefore don’t affect the value of the literal. Integer literals can begin with leading zeros (0), but they’re likewise ignored and don’t affect the base or value of the literal.
 
-## Multiline String Literals
-If you need a string that spans several lines, use a multiline string literal—a sequence of characters surrounded by three double quotation marks:
-![image](https://user-images.githubusercontent.com/44570720/127146031-b374c04b-ea5f-487a-baa2-37ad96a93e72.png)
-
 ## Intialization
 
 ![image](https://user-images.githubusercontent.com/44570720/141299005-f32f359e-d783-4607-8943-112bdbec98e3.png)
+
+
+| Default Property Values    | Customizing Initialization |
+| :------------- | :----------: |
+| ![image](https://user-images.githubusercontent.com/44570720/141446031-da24fb68-749c-454d-9465-b8ffccd11fcc.png) | ![image](https://user-images.githubusercontent.com/44570720/141446703-3daa172f-bfa7-471d-a2cb-926abb2b1a4a.png)
+
 
 ## Miscellaneous 
 Which is not part of Swift programming?
