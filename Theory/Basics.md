@@ -171,6 +171,11 @@ classes are passed by reference (**reference NOT copy**)
 structs passed by value (copy)
 
 ## Enumerations 
+![image](https://user-images.githubusercontent.com/44570720/141462458-70c29897-3b7c-4adf-acf9-c3120dcbc8f5.png)
+Types that conform to the CaseIterable protocol are typically enumerations without associated values. When using a CaseIterable type, you can access a collection of all of the type’s cases by using the type’s allCases property.
+
+![image](https://user-images.githubusercontent.com/44570720/141462491-d9a58b07-e2d5-48af-9680-d9c560cb278d.png)
+
 
 
 ## Storyboards
