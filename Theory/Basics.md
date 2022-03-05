@@ -22,6 +22,7 @@ https://developer.apple.com/documentation/uikit/app_and_environment/managing_you
 | :------------- | :----------: |
 | <img width="433" alt="Screenshot 2021-07-27 at 12 09 12" src="https://user-images.githubusercontent.com/44570720/127144492-bcf0e063-1191-43df-8030-9e6ac0912845.png"> |  <img width="517" alt="Screenshot 2021-07-27 at 12 09 05" src="https://user-images.githubusercontent.com/44570720/127144511-3a189ed8-7e8e-403c-a505-20555cd088e4.png">
 
+
 Non-running - The app is not running.  
 *Foreground.*  
  Inactive - The app is running in the **foreground**. 
@@ -64,8 +65,11 @@ Higher order functions are simply functions that operate on other functions by e
 These methods use **closures** to allow us to pass in functionality that can then determine how we want the method to work on an array of objects.
 
 **Converting functions into closures**
-remove func keyword and name of the function. 
-![image](https://user-images.githubusercontent.com/44570720/140043425-71f88474-ee8b-47ad-bf9b-84eaeefabdd8.png)
+
+| remove func keyword and name of the function.     | ![image](https://user-images.githubusercontent.com/44570720/140043425-71f88474-ee8b-47ad-bf9b-84eaeefabdd8.png)     |
+| :------------- | :----------: |
+|  |  |
+
 move the curly bracket to the front and replace it with the keyword in
 ![image](https://user-images.githubusercontent.com/44570720/140043591-614a3b2d-37ec-4423-a84c-28fa3c42170c.png)
 Due to swift's type inference, you can remove the data types for the parameters and the output (i.e :Int, and -> Int). 
@@ -88,10 +92,16 @@ In Swift, closures are **non-escaping** by default. You use **@escaping** keywor
 A closure is said to “escape” a function when it’s called after that function returns. 
 
 ---
+**REDUCE**
+Reduces the array into one number
+![image](https://user-images.githubusercontent.com/44570720/156888511-ac3e7be9-0e60-49e1-b718-6816fb23af12.png)
+
+**MAP**
+Map transforms each element in the array
+![image](https://user-images.githubusercontent.com/44570720/156889090-a896ff30-721e-4ba8-9388-7f7c0ffe0993.png)
 
 **Q: Identify the output for this code:**
-
-**A: Compile time error - as Higher order functions (closures on arrays) only take one parameter/argument at a time**
+**A: Compile time error - map only takes one parameter/argument at a time**
 
 ![image](https://user-images.githubusercontent.com/44570720/140053492-3696ffb6-8e6d-429d-ab24-6c24356fcf8f.png)
 
@@ -117,6 +127,16 @@ optionals make map complicated/dangerous if the transformed array now stores opt
 *Update*
 Some uses of flatMap() are being depreciated:
 https://useyourloaf.com/blog/replacing-flatmap-with-compactmap/
+
+**More on High Order Functions**
+You can pass operators as functions:
+Saw in kata but didnt work in play ground (maybe need to import a apple framework)
+
+https://mariusschulz.com/blog/passing-swifts-operator-functions-to-higher-order-functions
+
+## Generics
+Understanding "-> T" in the map bolierplate code above
+https://docs.swift.org/swift-book/LanguageGuide/Generics.html
 
 ## Testing Debugging
 ### Errors
